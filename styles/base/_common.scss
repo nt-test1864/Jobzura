@@ -1,0 +1,307 @@
+.pageHeader {
+  width: 100%;
+  @extend %FlexRow-CenterBetween;
+  padding-bottom: 1rem;
+
+  @include RespondTo(IpadDevices) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0.8rem;
+  }
+
+  h1 {
+    flex: 2;
+  }
+
+  .headerAction {
+    margin-left: 1rem;
+    @extend %FlexRow-CenterCenter;
+
+    @include RespondTo(IpadDevices) {
+      margin-left: 0;
+      margin-top: 0.7rem;
+    }
+
+    @include RespondTo(MobileDevices) {
+      flex-direction: column;
+      width: 100%;
+      font-size: 0.8rem;
+    }
+
+    .button {
+      @include RespondTo(MobileDevices) {
+        width: 100%;
+      }
+
+      + .button {
+        margin-left: 10px;
+
+        @include RespondTo(MobileDevices) {
+          margin-left: 0;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+.error {
+  margin: 5px;
+  text-align: center;
+}
+
+.errorText {
+  color: $ErrorColor;
+}
+
+.blockPlaceholder {
+  @include Font(null, 1.2rem, rgba($FontColorDark, 50%), null, 600);
+
+  @include RespondTo(SmallDesktop) {
+    font-size: 1rem;
+  }
+}
+
+.noData {
+  background: $LightBlueBg;
+  padding: 2rem;
+  @include BorderRadius(1rem);
+  @extend %FlexCol-CenterCenter;
+
+  > i {
+    @include Size(150px, 150px);
+    @extend %FlexCol-CenterCenter;
+
+    svg {
+      @include Size(120px, 120px);
+
+      path {
+        fill: rgba($FontColorDark, 0.5);
+      }
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.noteText {
+  @include Font(null, 0.9rem, rgba($FontColorDark, 0.75), null, null);
+
+  @include RespondTo(MobileDevices) {
+    font-size: 0.8rem;
+  }
+
+  strong {
+    font-weight: 700;
+    color: $FontColorDark;
+  }
+}
+
+.MuiFormControl-root.MuiTextField-root {
+  width: 100%;
+}
+
+.css-dhopo2 {
+  min-height: 210px !important;
+}
+
+.submitButtonOuter {
+  @extend %FlexCol-CenterCenter;
+  margin-top: 20px;
+}
+
+.blockLoading {
+  @include Size(100%, 295px);
+  position: relative;
+  margin-top: 10px;
+}
+
+.flex-center {
+  @extend %FlexRow-CenterStart;
+}
+
+.currencyIc {
+  @include Size(24px, 24px);
+  @extend %FlexCol-CenterCenter;
+  border: 1px solid $BorderDark;
+  @include BorderRadius(40px);
+}
+
+.visibleSmallerThanIpad {
+  display: none !important;
+
+  @include RespondTo(IpadDevices) {
+    display: block !important;
+  }
+}
+
+.hideSmallerThanIpad {
+  @include RespondTo(IpadDevices) {
+    display: none !important;
+  }
+}
+
+.statusChip {
+  display: inline-block;
+  @include BorderRadius(5px);
+  @include Font(null, 0.8rem, null, null, 600);
+  padding: 3px 8px 1px 8px;
+  white-space: nowrap;
+
+  &.statusAvailableBuyers {
+    color: $PrimaryColor;
+    background-color: rgba($PrimaryColor, 0.1);
+  }
+
+  &.statusQualifiedSellers {
+    color: $OrangeColor;
+    background-color: rgba($OrangeColor, 0.1);
+  }
+
+  &.statusAvailableSellers {
+    color: darken($SecondaryColor, 20%);
+    background-color: rgba($SecondaryColor, 0.2);
+  }
+
+  &.statusInProgress {
+    color: $OrangeColor;
+    background-color: rgba($OrangeColor, 0.1);
+  }
+
+  &.statusCanceled {
+    color: rgba($FontColorDark, 0.7);
+    background-color: rgba($FontColorDark, 0.1);
+  }
+
+  &.statusComplete {
+    color: darken($GreenColor, 10%);
+    background-color: rgba($GreenColor, 0.1);
+  }
+
+  &.statusDispute {
+    color: $ErrorColor;
+    background-color: rgba($ErrorColor, 0.1);
+  }
+}
+
+.walletListEditable {
+  width: 100%;
+  @extend %FlexRow-StartBetween;
+
+  .listOfWallets {
+    flex: 2;
+    @include Flexbox;
+    @include FlexFlow(wrap);
+
+    > span {
+      font-size: 0.85rem;
+      @extend %FlexRow-CenterStart;
+      display: inline-flex;
+      @include BorderRadius(50px);
+      background: rgba($BorderDark, 0.7);
+      padding: 6px 12px;
+      margin-bottom: 5px;
+      @include Transition(0.1s);
+      margin-right: 5px;
+    }
+  }
+
+  .listAction {
+    margin-left: 10px;
+  }
+}
+
+.editWalletsContainer {
+  padding-top: 7px;
+  font-size: 0.9rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.disableStar {
+  color: rgba($FontColorDark, 0.4);
+}
+
+.activeStar {
+  color: $FontColorDark;
+}
+
+.starRattingIcon {
+  color: $FontColorDark;
+
+  &.selected {
+    color: $BlackColor;
+  }
+}
+
+.darkMode {
+  .pageHeader {
+    h1 {
+      flex: 2;
+    }
+  }
+
+  .noData {
+    background: $DarkBlueBg;
+
+    > i {
+      svg {
+        path {
+          fill: rgba($FontColorLight, 0.25);
+        }
+      }
+    }
+  }
+
+  .currencyIc {
+    border-color: lighten($BorderLight, 5%);
+  }
+
+  .noteText {
+    color: rgba($FontColorLight, 0.75);
+
+    strong {
+      color: $FontColorLight;
+    }
+  }
+
+  .statusChip {
+    &.statusAvailableBuyers {
+      color: $LightBlueColor;
+      background-color: rgba($LightBlueColor, 0.1);
+    }
+
+    &.statusCanceled {
+      color: rgba($FontColorLight, 0.7);
+      background-color: rgba($FontColorLight, 0.1);
+    }
+  }
+
+  .blockPlaceholder {
+    color: rgba($FontColorLight, 50%);
+  }
+
+  .disableStar {
+    color: rgba($FontColorLight, 0.4);
+  }
+  
+  .activeStar {
+    color: $FontColorLight;
+  }
+
+  .starRattingIcon {
+    color: $FontColorLight;
+  
+    &.selected {
+      color: $WhiteColor;
+    }
+  }
+}

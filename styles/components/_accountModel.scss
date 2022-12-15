@@ -1,0 +1,103 @@
+.connectedAccount {
+  .accountBlock {
+    border: 1px solid $BorderDark;
+    @include BorderRadius($CardRounded);
+    padding: 1rem;
+
+    .blockTop {
+      @extend %FlexRow-CenterBetween;
+
+      .connectedWith {
+        @include Font(null, 0.8rem, rgba($BlackColor, 0.6), null, 600);
+        letter-spacing: 0;
+      }
+
+      .connectedActions {
+        display: block;
+      }
+    }
+
+    .walletAddress {
+      @extend %FlexRow-CenterBetween;
+      padding-top: 0.6rem;
+
+      .walletPic {
+        @include Size(16px, 16px);
+        margin-right: 8px;
+
+        i {
+          display: inline-block;
+          @include Size(16px, 16px);
+          @include BorderRadius(50%);
+          background: rgba($BlackColor, 0.2);
+        }
+      }
+
+      .walletID {
+        flex: 2;
+        @include Font(null, 1.2rem, $BlackColor, null, 500);
+      }
+    }
+
+    .walletActions {
+      padding-top: 1rem;
+
+      .withIcon.linkButton {
+        @extend %FlexRow-CenterBetween;
+        display: inline-flex;
+        padding: 0;
+        @include Font(null, 0.8rem, rgba($BlackColor, 0.6), null, 600);
+        min-width: 50px;
+        letter-spacing: 0;
+
+        + .linkButton {
+          margin-left: 1rem;
+        }
+
+        i {
+          width: 18px;
+        }
+
+        &:hover {
+          color: $PrimaryColor;
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .connectedAccount {
+    .accountBlock {
+      border-color: lighten($DarkBlueBg, 10%);
+
+      .blockTop {
+        .connectedWith {
+          color: rgba($WhiteColor, 0.6);
+        }
+      }
+
+      .walletAddress {
+        .walletPic {
+          i {
+            background: rgba($WhiteColor, 0.2);
+          }
+        }
+
+        .walletID {
+          color: $WhiteColor;
+        }
+      }
+
+      .walletActions {
+        .withIcon.linkButton {
+          color: rgba($WhiteColor, 0.6);
+
+          &:hover {
+            color: $LightBlueColor;
+          }
+        }
+      }
+    }
+  }
+}

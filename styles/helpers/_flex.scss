@@ -1,0 +1,321 @@
+// Flexbox Containers
+@mixin Flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+%flexbox {
+    @include Flexbox;
+}
+
+@mixin InlineFlex {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
+%inline-flex {
+    @include InlineFlex;
+}
+
+// Flexbox Direction
+@mixin FlexDirection($Value: row) {
+    @if $Value==row-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: horizontal;
+    } @else if $Value==column {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+    } @else if $Value==column-reverse {
+        -webkit-box-direction: reverse;
+        -webkit-box-orient: vertical;
+    } @else {
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+    }
+    -webkit-flex-direction: $Value;
+    -moz-flex-direction: $Value;
+    -ms-flex-direction: $Value;
+    flex-direction: $Value;
+}
+
+@mixin FlexDir($Args...) {
+    @include FlexDirection($Args...);
+}
+
+// Flexbox Wrap
+@mixin FlexWrap($Value: nowrap) {
+    // No Webkit Box fallback.
+    -webkit-flex-wrap: $Value;
+    -moz-flex-wrap: $Value;
+    @if $Value==nowrap {
+        -ms-flex-wrap: none;
+    } @else {
+        -ms-flex-wrap: $Value;
+    }
+    flex-wrap: $Value;
+}
+
+// Flexbox Flow (shorthand)
+@mixin FlexFlow(
+    $Values: (
+        row nowrap
+    )
+) {
+    -webkit-flex-flow: $Values;
+    -moz-flex-flow: $Values;
+    -ms-flex-flow: $Values;
+    flex-flow: $Values;
+}
+
+// Flexbox Order
+@mixin Order($Int: 0) {
+    -webkit-box-ordinal-group: $Int + 1;
+    -webkit-order: $Int;
+    -moz-order: $Int;
+    -ms-flex-order: $Int;
+    order: $Int;
+}
+
+// Flexbox Grow
+@mixin FlexGrow($Int: 0) {
+    -webkit-box-flex: $Int;
+    -webkit-flex-grow: $Int;
+    -moz-flex-grow: $Int;
+    -ms-flex-positive: $Int;
+    flex-grow: $Int;
+}
+
+// Flexbox Shrink
+@mixin FlexShrink($Int: 1) {
+    -webkit-flex-shrink: $Int;
+    -moz-flex-shrink: $Int;
+    -ms-flex-negative: $Int;
+    flex-shrink: $Int;
+}
+
+// Flexbox Basis
+@mixin FlexBasis($Value: auto) {
+    -webkit-flex-basis: $Value;
+    -moz-flex-basis: $Value;
+    -ms-flex-preferred-size: $Value;
+    flex-basis: $Value;
+}
+
+// Flexbox "Flex" (shorthand)
+@mixin Flex($FG: 1, $FS: null, $FB: null) {
+    $FGBoxflex: $FG;
+
+    @if TypeOf($FG) == "list" {
+        $FGBoxflex: nth($FG, 1);
+    }
+
+    -webkit-box-flex: $FGBoxflex;
+    -webkit-flex: $FG $FS $FB;
+    -moz-box-flex: $FGBoxflex;
+    -moz-flex: $FG $FS $FB;
+    -ms-flex: $FG $FS $FB;
+    flex: $FG $FS $FB;
+}
+
+// Flexbox Justify Content
+@mixin JustifyContent($Value: flex-start) {
+    @if $Value==flex-start {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+    } @else if $Value==flex-end {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+    } @else if $Value==space-between {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    } @else if $Value==space-around {
+        -ms-flex-pack: distribute;
+    } @else {
+        -webkit-box-pack: $Value;
+        -ms-flex-pack: $Value;
+    }
+    -webkit-justify-content: $Value;
+    -moz-justify-content: $Value;
+    justify-content: $Value;
+}
+
+@mixin FlexJust($Args...) {
+    @include JustifyContent($Args...);
+}
+
+// Flexbox Align Items
+@mixin AlignItems($Value: stretch) {
+    @if $Value==flex-start {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+    } @else if $Value==flex-end {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+    } @else {
+        -webkit-box-align: $Value;
+        -ms-flex-align: $Value;
+    }
+    -webkit-align-items: $Value;
+    -moz-align-items: $Value;
+    align-items: $Value;
+}
+
+// Flexbox Align Self
+@mixin AlignSelf($Value: auto) {
+    -webkit-align-self: $Value;
+    -moz-align-self: $Value;
+    @if $Value==flex-start {
+        -ms-flex-item-align: start;
+    } @else if $Value==flex-end {
+        -ms-flex-item-align: end;
+    } @else {
+        -ms-flex-item-align: $Value;
+    }
+    align-self: $Value;
+}
+
+// Flexbox Align Content
+@mixin AlignContent($Value: stretch) {
+    -webkit-align-content: $Value;
+    -moz-align-content: $Value;
+    @if $Value==flex-start {
+        -ms-flex-line-pack: start;
+    } @else if $Value==flex-end {
+        -ms-flex-line-pack: end;
+    } @else {
+        -ms-flex-line-pack: $Value;
+    }
+    align-content: $Value;
+}
+
+
+// Most Usable
+%Flex {
+    @include Flexbox;
+}
+%FlexRow {
+    @include Flexbox;
+    @include FlexDirection;
+}
+%FlexCol {
+    @include Flexbox;
+    @include FlexDirection(column);
+}
+%FlexRow {
+    &-StartStart {
+        @extend %FlexRow;
+        @include AlignItems(flex-start);
+        @include JustifyContent(flex-start);
+    }
+    &-StartAround {
+        @extend %FlexRow;
+        @include AlignItems(flex-start);
+        @include JustifyContent(space-around);
+    }
+    &-StartBetween {
+        @extend %FlexRow;
+        @include AlignItems(flex-start);
+        @include JustifyContent(space-between);
+    }
+    &-StartCenter {
+        @extend %FlexRow;
+        @include AlignItems(flex-start);
+        @include JustifyContent(center);
+    }
+    &-StartEnd {
+        @extend %FlexRow;
+        @include AlignItems(flex-start);
+        @include JustifyContent(flex-end);
+    }
+    &-CenterCenter {
+        @extend %FlexRow;
+        @include AlignItems(center);
+        @include JustifyContent(center);
+    }
+    &-CenterStart {
+        @extend %FlexRow;
+        @include AlignItems(center);
+        @include JustifyContent(flex-start);
+    }
+    &-CenterBetween {
+        @extend %FlexRow;
+        @include AlignItems(center);
+        @include JustifyContent(space-between);
+    }
+    &-NBetween {
+        @extend %FlexRow;
+        @include JustifyContent(space-between);
+    }
+    &-CenterEnd {
+        @extend %FlexRow;
+        @include AlignItems(center);
+        @include JustifyContent(flex-end);
+    }
+    &-EndBetween {
+        @extend %FlexRow;
+        @include AlignItems(flex-end);
+        @include JustifyContent(space-between);
+    }
+}
+%FlexCol {
+    &-StartStart {
+        @extend %FlexCol;
+        @include AlignItems(flex-start);
+        @include JustifyContent(flex-start);
+    }
+    &-StartAround {
+        @extend %FlexCol;
+        @include AlignItems(flex-start);
+        @include JustifyContent(space-around);
+    }
+    &-StartBetween {
+        @extend %FlexCol;
+        @include AlignItems(flex-start);
+        @include JustifyContent(space-between);
+    }
+    &-StartCenter {
+        @extend %FlexCol;
+        @include AlignItems(flex-start);
+        @include JustifyContent(center);
+    }
+    &-StartEnd {
+        @extend %FlexCol;
+        @include AlignItems(flex-start);
+        @include JustifyContent(flex-end);
+    }
+    &-CenterStart {
+        @extend %FlexCol;
+        @include AlignItems(center);
+        @include JustifyContent(flex-start);
+    }
+    &-CenterCenter {
+        @extend %FlexCol;
+        @include AlignItems(center);
+        @include JustifyContent(center);
+    }
+    &-CenterEnd {
+        @extend %FlexCol;
+        @include AlignItems(center);
+        @include JustifyContent(flex-end);
+    }
+    &-CenterBetween {
+        @extend %FlexCol;
+        @include AlignItems(center);
+        @include JustifyContent(space-between);
+    }
+    &-NCenter {
+        @extend %FlexCol;
+        @include JustifyContent(center);
+    }
+    &-EndEnd {
+        @extend %FlexCol;
+        @include AlignItems(flex-end);
+        @include JustifyContent(flex-end);
+    }
+}

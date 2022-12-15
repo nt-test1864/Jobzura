@@ -1,0 +1,47 @@
+.formRow {
+  margin-bottom: 10px;
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+
+  @include RespondTo(MobileDevices) {
+    flex-flow: wrap;
+  }
+
+  .formCol {
+    flex: 2;
+
+    @include RespondTo(MobileDevices) {
+      width: 100%;
+      flex: unset;
+    }
+
+    + .formCol {
+      margin-left: 20px;
+
+      @include RespondTo(MobileDevices) {
+        margin-left: 0px;
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+.formControl {
+  @include Size(100%, 35px);
+  border: 1px solid darken($LightBlueBg, 5%);
+  @include BorderRadius(3px);
+  padding: 5px 8px;
+
+  &.textarea {
+    height: auto;
+    resize: vertical;
+  }
+}
+
+.darkMode {
+  .formControl {
+    background: transparent;
+    border-color: lighten($BorderLight, 10%);
+    color: $FontColorLight;
+  }
+}

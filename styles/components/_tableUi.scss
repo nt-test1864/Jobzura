@@ -1,0 +1,180 @@
+.tableGridUi {
+  width: 100%;
+  @include Font(null, 0.9rem, $FontColorDark, null, 600);
+  white-space: nowrap;
+  overflow: auto;
+
+  @include RespondTo(MobileDevices) {
+    font-size: 0.8rem;
+  }
+
+  table {
+    width: 100%;
+
+    @include RespondTo(IpadDevices) {
+      display: block;
+    }
+
+    thead {
+      @include RespondTo(IpadDevices) {
+        display: block;
+      }
+
+      tr {
+        @include RespondTo(IpadDevices) {
+          display: block;
+        }
+
+        th {
+          padding: 16px;
+          border-bottom: 1px solid $BorderDark;
+          font-weight: 700;
+
+          @include RespondTo(IpadDevices) {
+            display: block;
+          }
+
+          @include RespondTo(MobileDevices) {
+            padding: 10px;
+          }
+        }
+
+        &.subHeader {
+          @include RespondTo(IpadDevices) {
+            display: none;
+          }
+
+          th {
+            color: rgba($FontColorDark, 0.7);
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    tbody {
+      @include RespondTo(IpadDevices) {
+        display: block;
+      }
+
+      tr {
+        @include RespondTo(IpadDevices) {
+          display: block;
+          position: relative;
+        }
+
+        td {
+          width: 18%;
+          padding: 16px;
+          border-bottom: 1px solid $BorderDark;
+
+          @include RespondTo(IpadDevices) {
+            width: 100%;
+            display: block;
+            border-bottom: none;
+            padding: 10px 10px;
+          }
+
+          @include RespondTo(MobileDevices) {
+            padding: 10px;
+          }
+
+          label.mobileLabel {
+            display: none;
+
+            @include RespondTo(IpadDevices) {
+              display: block;
+              text-transform: uppercase;
+              font-size: 0.8rem;
+              color: rgba($FontColorDark, 0.7);
+              padding-bottom: 3px;
+            }
+          }
+
+          .button.moreButton {
+            min-width: 10px;
+            padding: 10px;
+            position: relative;
+
+            @include RespondTo(IpadDevices) {
+              @include Absolute($Top: 10px, $Right: 10px);
+            }
+
+            @include RespondTo(MobileDevices) {
+              padding: 7px;
+            }
+          }
+
+          &:first-child {
+            @include RespondTo(IpadDevices) {
+              padding-right: 60px;
+            }
+          }
+
+          &:last-child {
+            @include RespondTo(IpadDevices) {
+              border-bottom: 1px solid $BorderDark !important;
+            }
+          }
+        }
+
+        &:last-child {
+          td {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .tableGridUi {
+    color: $FontColorLight;
+
+    table {
+      thead {
+        tr {
+          th {
+            border-bottom-color: $BorderLight;
+
+            h3 {
+              color: $FontColorLight;
+            }
+          }
+
+          &.subHeader {
+            th {
+              color: rgba($FontColorLight, 0.7);
+            }
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            border-bottom-color: $BorderLight;
+
+            label.mobileLabel {
+              @include RespondTo(IpadDevices) {
+                color: rgba($FontColorLight, 0.7);
+              }
+            }
+
+            .button {
+              background: none;
+              border-color: $BorderLight;
+            }
+
+            &:last-child {
+              @include RespondTo(IpadDevices) {
+                border-bottom-color: $BorderLight !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

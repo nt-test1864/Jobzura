@@ -1,0 +1,1248 @@
+.profileHead {
+  @extend %FlexRow-StartBetween;
+  padding-top: 30px;
+
+  @include RespondTo(IpadDevices) {
+    flex-direction: column;
+    padding-top: 15px;
+  }
+
+  .profileHeadLeft {
+    width: calc(100% - 390px);
+    @extend %FlexRow-StartBetween;
+
+    @include RespondTo(SmallDesktop) {
+      width: calc(100% - 330px);
+    }
+
+    @include RespondTo(IpadDevices) {
+      width: 100%;
+    }
+
+    .userPic {
+      width: 92px;
+
+      @include RespondTo(SmallDesktop) {
+        width: 80px;
+      }
+
+      @include RespondTo(MobileDevices) {
+        width: 72px;
+      }
+
+      > span {
+        display: inline-block;
+        @include Size(92px, 92px);
+        @include BorderRadius(50%);
+        background: rgba($BlackColor, 0.1);
+
+        @include RespondTo(SmallDesktop) {
+          @include Size(80px, 80px);
+        }
+
+        @include RespondTo(MobileDevices) {
+          @include Size(72px, 72px);
+        }
+      }
+    }
+
+    .userSort {
+      flex: 2;
+      margin-left: 20px;
+      padding-top: 5px;
+
+      @include RespondTo(SmallDesktop) {
+        width: calc(100% - 87px);
+        margin-left: 15px;
+        padding-top: 0px;
+      }
+
+      .nameAndBadge {
+        // @extend %FlexRow-CenterStart;
+        @include Flexbox;
+        @include FlexFlow(wrap);
+        @include AlignItems(center);
+        padding-bottom: 5px;
+
+        @include RespondTo(IpadDevices) {
+          padding-bottom: 0px;
+        }
+
+        .userName {
+          @include Font(null, 1.4rem, $FontColorDark, null, 700);
+          margin-right: 10px;
+
+          @include RespondTo(SmallDesktop) {
+            font-size: 1.2rem;
+          }
+
+          @include RespondTo(MobileDevices) {
+            font-size: 1.1rem;
+          }
+        }
+
+        .userBadge {
+          .badgeBlock {
+            display: inline-block;
+            background: $BlackColor;
+            padding: 5px 12px 5px 28px;
+            @include BorderRadius(30px);
+            @include Font(null, 0.8rem, $WhiteColor, null, 600);
+            position: relative;
+
+            @include RespondTo(SmallDesktop) {
+              padding: 3px 10px 3px 25px;
+            }
+
+            @include RespondTo(MobileDevices) {
+              padding: 2px 7px 2px 20px;
+            }
+
+            &::before {
+              content: "";
+              @include Absolute($Left: 7px, $Top: 6px);
+              @include Size(16px, 16px);
+              background: $WhiteColor;
+              @include BorderRadius(50%);
+
+              @include RespondTo(SmallDesktop) {
+                @include Size(14px, 14px);
+                top: 5px;
+                left: 6px;
+              }
+
+              @include RespondTo(MobileDevices) {
+                @include Size(12px, 12px);
+                left: 5px;
+              }
+            }
+          }
+        }
+      }
+
+      .userAddress {
+        white-space: nowrap;
+        width: 98%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        @include RespondTo(MobileDevices) {
+          margin-top: 10px;
+        }
+      }
+
+      .userHeadline {
+        @extend %FlexRow-CenterStart;
+        padding-top: 5px;
+
+        h3 {
+          display: inline-block;
+          @include Font(null, 1rem, $FontColorDark, null, 700);
+
+          @include RespondTo(SmallDesktop) {
+            font-size: 0.9rem;
+          }
+
+          @include RespondTo(MobileDevices) {
+            font-size: 0.8rem;
+          }
+        }
+
+        i {
+          @extend %FlexCol-CenterCenter;
+          @include Size(26px, 26px);
+          margin-left: 10px;
+
+          @include RespondTo(SmallDesktop) {
+            @include Size(24px, 24px);
+          }
+
+          button {
+            @extend %FlexCol-CenterCenter;
+            @include Size(26px, 26px);
+            @include BorderRadius(50%);
+            border: 1px solid $LightBlueBg;
+            cursor: pointer;
+
+            @include RespondTo(SmallDesktop) {
+              @include Size(24px, 24px);
+            }
+          }
+
+          svg {
+            @include Size(50%, 50%);
+
+            path {
+              fill: $BlackColor;
+            }
+          }
+        }
+      }
+
+      .userTimezone {
+        @extend %FlexRow-CenterStart;
+        padding-top: 3px;
+
+        h4 {
+          @extend %FlexRow-CenterStart;
+          @include Font(null, 0.9rem, rgba($FontColorDark, 0.7), null, 600);
+
+          @include RespondTo(SmallDesktop) {
+            font-size: 0.8rem;
+          }
+        }
+
+        i {
+          @extend %FlexCol-CenterCenter;
+          @include Size(26px, 26px);
+          margin-left: 10px;
+
+          @include RespondTo(SmallDesktop) {
+            @include Size(24px, 24px);
+          }
+
+          button {
+            @extend %FlexCol-CenterCenter;
+            @include Size(26px, 26px);
+            @include BorderRadius(50%);
+            border: 1px solid $LightBlueBg;
+            cursor: pointer;
+
+            @include RespondTo(SmallDesktop) {
+              @include Size(24px, 24px);
+            }
+          }
+
+          svg {
+            @include Size(50%, 50%);
+
+            path {
+              fill: $BlackColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .profileHeadRight {
+    width: 370px;
+    border: 1px solid $BorderDark;
+    padding: 12px;
+    text-align: center;
+
+    @include RespondTo(SmallDesktop) {
+      width: 320px;
+    }
+
+    @include RespondTo(IpadDevices) {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    @include RespondTo(MobileDevices) {
+      padding: 5px;
+    }
+
+    h3 {
+      @include Font(null, 1rem, $FontColorDark, null, 700);
+      margin-bottom: 10px;
+
+      @include RespondTo(SmallDesktop) {
+        font-size: 0.9rem;
+        margin-bottom: 5px;
+      }
+    }
+
+    .actionButton {
+      width: 100%;
+
+      .button {
+        width: 100%;
+        @include JustifyContent(center);
+
+        svg {
+          path {
+            fill: $WhiteColor;
+          }
+        }
+
+        > span {
+          flex: unset;
+        }
+      }
+    }
+  }
+}
+
+.profileDetails {
+  width: calc(100% - 390px);
+
+  @include RespondTo(SmallDesktop) {
+    width: 100%;
+  }
+
+  .userHighlights {
+    @extend %FlexRow-CenterStart;
+    padding-top: 20px;
+
+    @include RespondTo(MobileDevices) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .userStarsAndReviews {
+      @extend %FlexRow-CenterStart;
+
+      .userStars {
+        @extend %FlexRow-CenterStart;
+
+        .startRattings {
+          @extend %FlexRow-CenterStart;
+
+          svg {
+            @include Size(18px, 18px);
+
+            @include RespondTo(SmallDesktop) {
+              @include Size(16px, 16px);
+            }
+          }
+        }
+
+        .rattingCounts {
+          @include Font(null, 0.9rem, $FontColorDark, null, 700);
+          padding-left: 5px;
+
+          @include RespondTo(MobileDevices) {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+      .userTotalReviews {
+        @include Font(null, 0.9rem, $FontColorDark, null, 600);
+        white-space: nowrap;
+        padding-left: 10px;
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .userTotalOrders {
+      @include Font(null, 0.9rem, $FontColorDark, null, 600);
+      padding-left: 30px;
+
+      @include RespondTo(MobileDevices) {
+        padding-left: 0px;
+        padding-top: 5px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .userTotalEarned {
+      @include Font(null, 0.9rem, $FontColorDark, null, 600);
+      padding-left: 30px;
+
+      @include RespondTo(MobileDevices) {
+        padding-left: 0px;
+        padding-top: 5px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .userJobSuccessScore {
+      @include Font(null, 0.9rem, $FontColorDark, null, 600);
+      padding-left: 30px;
+
+      @include RespondTo(MobileDevices) {
+        padding-left: 0px;
+        padding-top: 5px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .userBio {
+    padding-top: 30px;
+
+    h3 {
+      @include Font(null, 1.2rem, $FontColorDark, null, 700);
+
+      @include RespondTo(MobileDevices) {
+        font-size: 1.1rem;
+      }
+    }
+
+    .descriptionPara {
+      @extend %FlexRow-StartStart;
+      @include Font(null, 1rem, $FontColorDark, null, 500);
+      white-space: pre-line;
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.9rem;
+      }
+
+      i {
+        @extend %FlexCol-CenterCenter;
+        @include Size(26px, 26px);
+        margin-left: 10px;
+
+        button {
+          @extend %FlexCol-CenterCenter;
+          @include Size(26px, 26px);
+          @include BorderRadius(50%);
+          border: 1px solid $LightBlueBg;
+          cursor: pointer;
+        }
+
+        svg {
+          @include Size(50%, 50%);
+
+          path {
+            fill: $BlackColor;
+          }
+        }
+      }
+    }
+  }
+
+  .userLanguages {
+    padding-top: 30px;
+
+    .languagesList {
+      @include Flexbox;
+      @include FlexFlow(wrap);
+      margin-top: 5px;
+      @include Font(null, 1rem, $FontColorDark, null, 400);
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.9rem;
+      }
+
+      .languageItem {
+        white-space: nowrap;
+
+        strong {
+          font-weight: 700;
+        }
+
+        + .languageItem {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .userSkills {
+    padding-top: 30px;
+
+    .skillsTags {
+      display: block;
+      padding-top: 15px;
+
+      > span {
+        display: inline-block;
+        min-width: 50px;
+        text-align: center;
+        background: $LightBlueBg;
+        @include BorderRadius(50px);
+        padding: 6px 12px;
+        margin-right: 6px;
+        @include Font(null, 0.85rem, $FontColorDark, null, 600);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .blockHeader {
+    @extend %FlexRow-CenterStart;
+
+    h3 {
+      @include Font(null, 1.2rem, $FontColorDark, null, 700);
+
+      @include RespondTo(MobileDevices) {
+        font-size: 1.1rem;
+      }
+    }
+
+    .blockActions {
+      @extend %FlexRow-StartCenter;
+      margin-left: 10px;
+
+      i {
+        @extend %FlexCol-CenterCenter;
+        @include Size(26px, 26px);
+
+        + i {
+          margin-left: 5px;
+        }
+
+        button {
+          @extend %FlexCol-CenterCenter;
+          @include Size(26px, 26px);
+          @include BorderRadius(50%);
+          border: 1px solid $LightBlueBg;
+        }
+
+        svg {
+          @include Size(55%, 55%);
+
+          path {
+            fill: $FontColorDark;
+          }
+        }
+      }
+    }
+  }
+
+  .editLangRow {
+    @extend %FlexRow-EndBetween;
+    margin-bottom: 10px;
+
+    .rowOptions {
+      flex: 2;
+      @extend %FlexRow-StartBetween;
+
+      > div {
+        width: calc(50% - 5px);
+
+        label {
+          @include Font(null, 0.8rem, $FontColorDark, null, 600);
+
+          @include RespondTo(MobileDevices) {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+
+    .rowAction {
+      @extend %FlexRow-StartBetween;
+      margin-left: 10px;
+
+      > i {
+        @extend %FlexCol-CenterCenter;
+        @include Size(36px, 36px);
+
+        button {
+          @extend %FlexCol-CenterCenter;
+          @include Size(36px, 36px);
+          @include BorderRadius(50%);
+          border: 1px solid $LightBlueBg;
+          cursor: pointer;
+        }
+
+        svg {
+          @include Size(50%, 50%);
+
+          path {
+            fill: $OrangeColor;
+          }
+        }
+      }
+    }
+  }
+
+  .editActions {
+    margin-top: 10px;
+
+    button {
+      + button {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .reviews {
+    padding: 30px 0;
+
+    @include RespondTo(MobileDevices) {
+      padding: 10px 0;
+    }
+
+    .reviewsHeader {
+      display: flex;
+      justify-content: space-between;
+
+      @include RespondTo(MobileDevices) {
+        flex-direction: column;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        @include RespondTo(MobileDevices) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0;
+        }
+
+        .ratingStars {
+          display: flex;
+          margin-top: 2px;
+
+          @include RespondTo(MobileDevices) {
+            margin-top: 8px;
+          }
+        }
+      }
+
+      .imagesOnly {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .sort {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        @include RespondTo(MobileDevices) {
+          margin-top: 10px;
+        }
+
+        > div {
+          @include RespondTo(MobileDevices) {
+            flex: 2;
+          }
+        }
+      }
+    }
+
+    .reviewsSummary {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+
+      .reviewsSummaryRows {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+
+        span {
+          width: 65px;
+          font-weight: 700;
+          cursor: pointer;
+        }
+
+        .reviewsSummaryBar {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+          height: 20px;
+          background: rgba($BorderDark, 0.5);
+          overflow: hidden;
+
+          .reviewsSummaryBarFill {
+            height: 100%;
+            background: $BlackColor;
+          }
+        }
+      }
+    }
+
+    .reviewsList {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      width: 100%;
+      gap: 30px;
+
+      @include RespondTo(MobileDevices) {
+        gap: 10px;
+      }
+
+      .reviewContainer {
+        border: 1px solid rgba($BorderDark, 0.5);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+
+        @include RespondTo(MobileDevices) {
+          padding: 15px;
+        }
+
+        .reviewContainerHeader {
+          @extend %FlexRow-CenterBetween;
+          margin-bottom: 15px;
+
+          @include RespondTo(MobileDevices) {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .reviewContainerLeft {
+            @extend %FlexRow-CenterBetween;
+            gap: 10px;
+
+            .ratingStars {
+              display: flex;
+
+              h3 {
+                margin-left: 5px;
+              }
+            }
+          }
+
+          .reviewContainerRight {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+
+            @include RespondTo(MobileDevices) {
+              margin-top: 10px;
+            }
+          }
+        }
+
+        .reviewQuestion {
+          display: flex;
+          margin-top: 20px;
+          align-items: center;
+          gap: 10px;
+
+          p {
+            font-weight: 700;
+            margin-right: 20px;
+          }
+
+          .reviewQuestionButtons {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+.publishGigs {
+  padding-top: 50px;
+
+  @include RespondTo(MobileDevices) {
+    padding-top: 30px;
+  }
+
+  h3 {
+    @include Font(null, 1.4rem, $FontColorDark, null, 700);
+
+    @include RespondTo(MobileDevices) {
+      font-size: 1.2rem;
+    }
+  }
+
+  .gigsContainer {
+    @include Flexbox;
+    @include FlexFlow(wrap);
+    padding-top: 20px;
+
+    .gigBlock {
+      width: calc(50% - 13px);
+      margin-bottom: 26px;
+      position: relative;
+
+      @include RespondTo(MobileDevices) {
+        width: 100%;
+      }
+
+      &:nth-child(2n) {
+        margin-left: 26px;
+
+        @include RespondTo(MobileDevices) {
+          margin-left: 0px;
+        }
+      }
+
+      &:hover {
+        .blockAction {
+          display: block;
+        }
+      }
+
+      .blockAction {
+        @include Absolute($Right: 10px, $Top: 10px);
+        z-index: 9;
+        display: none;
+
+        @include RespondTo(IpadDevices) {
+          display: block;
+        }
+
+        .button {
+          min-width: 10px;
+        }
+      }
+
+      .blockInner {
+        cursor: pointer;
+        width: 100%;
+
+        .blockThumb {
+          @include Size(100%, 250px);
+          background: rgba($BorderDark, 0.5);
+
+          @include RespondTo(MobileDevices) {
+            height: 210px;
+          }
+
+          .placeholderImage {
+            @extend %placeholderImage;
+            @include Size(100%, 100%);
+            background-repeat: no-repeat;
+            background-size: 25%;
+            background-position: center;
+            opacity: 0.2;
+          }
+
+          .imageGaller {
+            @include Size(100%, 100%);
+
+            .swiper {
+              @include Size(100%, 100%);
+
+              .swiper-slide {
+                width: 100% !important;
+
+                > span,
+                img {
+                  width: 100% !important;
+                  height: 100% !important;
+                }
+              }
+            }
+          }
+        }
+
+        .blockContent {
+          border: 1px solid rgba($BorderDark, 0.5);
+
+          .blockDetails {
+            padding: 10px 15px;
+
+            .blockTitle {
+              @include Font(null, 1rem, $FontColorDark, null, 700);
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              margin-bottom: 5px;
+
+              @include RespondTo(MobileDevices) {
+                font-size: 0.8rem;
+              }
+            }
+
+            .blockDescription {
+              @include Font(null, 0.9rem, $FontColorDark, 1.2rem, 400);
+              min-height: 60px;
+              overflow: hidden;
+
+              @include RespondTo(MobileDevices) {
+                font-size: 0.8rem;
+              }
+            }
+          }
+
+          .blockFooter {
+            border-top: 1px solid rgba($BorderDark, 0.5);
+            padding: 10px;
+            @extend %FlexRow-CenterBetween;
+
+            .gigRateReview {
+              @extend %FlexRow-CenterCenter;
+
+              .gigStars {
+                @extend %FlexRow-CenterCenter;
+
+                .startRattings {
+                  @extend %FlexRow-CenterCenter;
+
+                  i {
+                    @include Size(14px, 14px);
+                    @extend %FlexCol-CenterCenter;
+
+                    &.fill {
+                      svg {
+                        path {
+                          fill: $FontColorDark;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .rattingCounts {
+                  @include Font(null, 0.8rem, $FontColorDark, null, 700);
+                  padding-left: 5px;
+
+                  @include RespondTo(MobileDevices) {
+                    font-size: 0.75rem;
+                  }
+                }
+              }
+
+              .gigTotalReviews {
+                @include Font(
+                  null,
+                  0.8rem,
+                  rgba($FontColorDark, 0.7),
+                  null,
+                  400
+                );
+                white-space: nowrap;
+                padding-left: 5px;
+
+                @include RespondTo(MobileDevices) {
+                  font-size: 0.75rem;
+                }
+              }
+            }
+
+            .gigPrice {
+              @include Font(null, 0.8rem, $FontColorDark, null, 700);
+
+              @include RespondTo(MobileDevices) {
+                font-size: 0.75rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .jobPlaceholder {
+    @include Size(100%, 200px);
+    background: rgba($BlackColor, 0.05);
+    @extend %FlexCol-CenterCenter;
+
+    h3 {
+      @include Font(null, 1.2rem, $FontColorDark, null, 600);
+      margin-bottom: 10px;
+
+      @include RespondTo(MobileDevices) {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.customTimezonePicker .css-1pahdxg-control,
+.customTimezonePicker .css-1pahdxg-control:hover {
+  border-color: $BlackColor;
+  box-shadow: 0 0 0 1px $BlackColor;
+}
+
+.darkMode {
+  .profileHead {
+    .profileHeadLeft {
+      .userSort {
+        .nameAndBadge {
+          .userName {
+            color: $WhiteColor;
+          }
+
+          .userBadge {
+            .badgeBlock {
+              background: $LightBlueColor;
+            }
+          }
+        }
+
+        .userHeadline {
+          h3 {
+            color: $FontColorLight;
+          }
+
+          i {
+            button {
+              border-color: $BorderLight;
+            }
+
+            svg {
+              path {
+                fill: $WhiteColor;
+              }
+            }
+          }
+        }
+
+        .userTimezone {
+          h4 {
+            color: rgba($FontColorLight, 0.7);
+          }
+
+          i {
+            button {
+              border-color: $BorderLight;
+            }
+
+            svg {
+              path {
+                fill: $WhiteColor;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .profileHeadRight {
+      border-color: $BorderLight;
+
+      h3 {
+        color: $FontColorLight;
+      }
+
+      .actionButton {
+        .button {
+          background-color: $LightBlueColor;
+
+          svg {
+            path {
+              fill: $WhiteColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .profileDetails {
+    .userHighlights {
+      .userStarsAndReviews {
+        .userStars {
+          .startRattings {
+            i {
+              svg {
+                path {
+                  fill: rgba($FontColorLight, 0.3);
+                }
+              }
+
+              &.fill {
+                svg {
+                  path {
+                    fill: $FontColorLight;
+                  }
+                }
+              }
+            }
+          }
+
+          .rattingCounts {
+            color: $FontColorLight;
+          }
+        }
+
+        .userTotalReviews {
+          color: $FontColorLight;
+        }
+      }
+
+      .userTotalOrders {
+        color: $FontColorLight;
+      }
+
+      .userTotalEarned {
+        color: $FontColorLight;
+      }
+
+      .userJobSuccessScore {
+        color: $FontColorLight;
+      }
+    }
+
+    .userBio {
+      h3 {
+        color: $FontColorLight;
+      }
+
+      .descriptionPara {
+        color: $FontColorLight;
+
+        i {
+          button {
+            border-color: $BorderLight;
+          }
+
+          svg {
+            path {
+              fill: $WhiteColor;
+            }
+          }
+        }
+      }
+    }
+
+    .userLanguages {
+      .languagesList {
+        color: $FontColorLight;
+      }
+    }
+
+    .userSkills {
+      .skillsTags {
+        > span {
+          background: $DarkBlueBg;
+          color: $FontColorLight;
+        }
+      }
+    }
+
+    .blockHeader {
+      h3 {
+        color: $FontColorLight;
+      }
+
+      .blockActions {
+        i {
+          button {
+            border-color: $DarkBlueBg;
+          }
+
+          svg {
+            path {
+              fill: $WhiteColor;
+            }
+          }
+        }
+      }
+    }
+
+    .editLangRow {
+      .rowOptions {
+        > div {
+          label {
+            color: $FontColorLight;
+          }
+        }
+      }
+
+      .rowAction {
+        > i {
+          button {
+            border-color: $DarkBlueBg;
+          }
+
+          svg {
+            path {
+              fill: $OrangeColor;
+            }
+          }
+        }
+      }
+    }
+
+    .reviews {
+      .reviewsHeader {
+        .rating {
+          .totalReviews {
+            color: $FontColorLight;
+          }
+
+          .ratingStars {
+            .totalRatings {
+              color: $FontColorLight;
+            }
+          }
+        }
+
+        .sortActions {
+          .sortLabel {
+            color: $FontColorLight;
+          }
+        }
+      }
+    }
+  }
+
+  .publishGigs {
+    h3 {
+      color: $FontColorLight;
+    }
+
+    .gigsContainer {
+      .gigBlock {
+        .blockInner {
+          .blockThumb {
+            background: rgba($BorderLight, 0.5);
+          }
+
+          .blockContent {
+            border-color: rgba($BorderLight, 0.5);
+
+            .blockDetails {
+              .blockTitle {
+                color: $FontColorLight;
+              }
+
+              .blockDescription {
+                color: $FontColorLight;
+              }
+            }
+
+            .blockFooter {
+              border-top-color: rgba($BorderLight, 0.5);
+
+              .gigRateReview {
+                .gigStars {
+                  .rattingCounts {
+                    color: $FontColorLight;
+                  }
+                }
+
+                .gigTotalReviews {
+                  color: $FontColorLight;
+                }
+              }
+
+              .gigPrice {
+                color: $FontColorLight;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .jobPlaceholder {
+      background: rgba($WhiteColor, 0.05);
+
+      h3 {
+        color: $FontColorLight;
+      }
+    }
+  }
+
+  .reviews {
+    .reviewsSummary {
+      .reviewsSummaryRows {
+        .reviewsSummaryBar {
+          background: rgba($BorderLight, 0.5);
+
+          .reviewsSummaryBarFill {
+            height: 100%;
+            background: $WhiteColor;
+          }
+        }
+      }
+    }
+
+    .reviewsList {
+      .reviewContainer {
+        border-color: rgba($BorderLight, 0.5);
+      }
+    }
+  }
+}

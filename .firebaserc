@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "jobzura-v2-37ad4"
+  },
+  "targets": {},
+  "etags": {
+    "jobzura-v2-37ad4": {
+      "extensionInstances": {
+        "moralis-streams": "0d94d9b785183e7e13a527b9cc142ef49ca5e924ac148863b311b003acb4f9d8",
+        "moralis-auth": "f0ff3e3b4f0e4ccf636c77b76a1746832a1f401f150f588eab792254a4929c8a"
+      }
+    }
+  }
+}

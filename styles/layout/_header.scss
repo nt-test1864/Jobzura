@@ -1,0 +1,1074 @@
+header {
+  flex-shrink: 0;
+  background: $WhiteColor;
+  border-bottom: 1px solid $BorderDark;
+  z-index: 99;
+
+  @include RespondTo(IpadDevices) {
+    @include JustifyContent(space-between);
+  }
+
+  > .wrapper {
+    @include Size(100%, 64px);
+    @include Relative;
+    @include Flexbox;
+    @include FlexFlow(nowrap);
+    @include JustifyContent(space-between);
+    gap: 8px;
+    flex-direction: row;
+
+    @include RespondTo(IpadDevices) {
+      height: auto;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  .mobileNavbar {
+    display: none;
+
+    @include RespondTo(IpadDevices) {
+      display: block;
+      @include Absolute($Left: 16px, $Top: 12px);
+    }
+
+    i {
+      @include Size(100%, 100%);
+      @extend %FlexCol-CenterCenter;
+
+      svg {
+        @include Size(24px, 24px);
+      }
+    }
+  }
+
+  .logo {
+    @include Size(auto, 100%);
+    @extend %FlexCol-CenterCenter;
+
+    @include RespondTo(IpadDevices) {
+      width: 100%;
+      height: 50px;
+    }
+
+    button {
+      @extend %FlexCol-CenterCenter;
+    }
+
+    svg {
+      @include Size(150px, 40px);
+
+      @include RespondTo(IpadDevices) {
+        height: 30px;
+      }
+    }
+  }
+
+  .headerSearch {
+    height: 100%;
+    @extend %FlexCol-CenterCenter;
+
+    @media only screen and (max-width: 900px) {
+      height: auto;
+      margin-bottom: 5px;
+    }
+
+    .searchContainer {
+      @include Size(100%, 40px);
+      border: 1px solid $BorderDark;
+      background: $WhiteColor;
+      @include BorderRadius(3px);
+      @extend %FlexRow-CenterBetween;
+      padding: 5px;
+
+      @media only screen and (max-width: 900px) {
+        height: 32px;
+      }
+
+      i.searchIcon {
+        @include Size(18px, 18px);
+        @extend %FlexCol-CenterCenter;
+        margin: 0 3px;
+
+        svg {
+          @media only screen and (max-width: 900px) {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        + div {
+          flex: 2;
+        }
+      }
+
+      .autoSuggestDropdown {
+        cursor: pointer;
+        font-size: 13px;
+        text-transform: capitalize;
+        padding: 8px;
+
+        &:hover {
+          background: lightgrey;
+        }
+      }
+
+      .searchControl {
+        border: none;
+        background: none;
+        margin: 0 5px;
+        width: 300px;
+        text-transform: capitalize;
+
+        @include RespondTo(SmallDesktop) {
+          width: 100%;
+          text-overflow: ellipsis;
+        }
+
+        + div {
+          z-index: 999 !important;
+        }
+      }
+    }
+  }
+
+  nav.navbarMain {
+    @media only screen and (max-width: 900px) {
+      margin-right: 40px;
+    }
+
+    @include RespondTo(IpadDevices) {
+      display: none;
+      @include Fixed($Left: 0px, $Top: 93px, $Right: 0px, $Bottom: 0px);
+      background: $WhiteColor;
+      margin: 0px;
+      z-index: 99;
+      overflow: auto;
+    }
+
+    &.show {
+      @include RespondTo(IpadDevices) {
+        display: block;
+      }
+    }
+
+    ul {
+      @include Size(100%, 100%);
+      @extend %FlexRow-CenterStart;
+
+      @include RespondTo(IpadDevices) {
+        flex-direction: column;
+      }
+
+      li {
+        position: relative;
+        height: 100%;
+        padding: 0 8px;
+        @extend %FlexCol-CenterCenter;
+
+        @include RespondTo(IpadDevices) {
+          height: auto;
+          width: 100%;
+          padding: 15px 20px;
+          border-bottom: 1px solid $BorderDark;
+        }
+
+        .earnings {
+          .button.transparent {
+            padding: 0;
+            @include Font(null, 0.8rem, $FontColorDark, null, 700);
+            letter-spacing: 0px;
+            min-width: 10px;
+  
+            @include RespondTo(IpadDevices) {
+              width: 100%;
+              font-size: 1rem;
+              height: auto;
+              text-align: left;
+            }
+          }
+
+          .modal {
+            @include Absolute($Top: 150%, $Left: -40%);
+            transform: translateY(-50%);
+            width: 130px;
+      
+            @include RespondTo(IpadDevices) {
+              top: calc(100% + 12px);
+              left: 50%;
+              transform: none;
+              transform: translateX(-50%);
+            }
+  
+          .button.transparent {
+            padding: 0;
+            @include Font(null, 0.8rem, $FontColorDark, null, 700);
+            letter-spacing: 0px;
+            min-width: 10px;
+  
+            @include RespondTo(IpadDevices) {
+              width: 100%;
+              font-size: 1rem;
+              height: auto;
+              text-align: left;
+            }
+          }
+        }
+          .polygon {
+            @include Absolute($Top: 0%, $Left: 45%);
+            transform: translateY(-75%) rotate(90deg);
+            @include Triangle(Left, 8px, 8px, $FontColorDark);
+    
+            @include RespondTo(IpadDevices) {
+              top: -8px;
+              left: 50%;
+              transform: translateX(-50%);
+              @include Triangle(Top, 8px, 8px, $FontColorDark);
+            }
+          }
+    
+          .modalContent {
+            color: $LightBlueBg;
+            border-radius: 8px;
+            background-color: $FontColorDark;
+            padding: 14px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+    
+            @include RespondTo(MobileDevices) {
+              padding: 12px;
+              border-radius: 5px;
+            }
+          }
+        }
+
+
+        &:last-child {
+          @include RespondTo(IpadDevices) {
+            border-bottom: none;
+          }
+        }
+
+        a {
+          @extend %FlexCol-CenterCenter;
+          display: inline-flex;
+          height: 100%;
+          padding: 10px;
+          text-decoration: none;
+          @include Font(null, 0.8rem, $FontColorDark, normal, 700);
+
+          @include RespondTo(IpadDevices) {
+            width: 100%;
+            padding: 0;
+            font-size: 1rem;
+            align-items: flex-start;
+          }
+        }
+
+        > .button.transparent {
+          padding: 0;
+          @include Font(null, 0.8rem, $FontColorDark, null, 700);
+          letter-spacing: 0px;
+          min-width: 10px;
+
+          @include RespondTo(IpadDevices) {
+            width: 100%;
+            font-size: 1rem;
+            height: auto;
+            text-align: left;
+          }
+
+          > .inboxUserThumb {
+            width: 60px;
+            position: relative;
+
+            > span.profilePic {
+              margin: 0;
+              padding: 0;
+              display: inline-block;
+              @include Size(50px, 50px);
+              @include BorderRadius(50%);
+              background: rgba($BorderDark, 0.3);
+            }
+
+            .userAvailabilityIc {
+              @include Absolute($Bottom: 5px, $Right: 10px);
+              @include Size(15px, 15px);
+              @include BorderRadius(50%);
+              background: rgba($BlackColor, 0.3);
+
+              &.isAvailable {
+                background: green;
+              }
+            }
+          }
+
+          > span {
+            margin-left: 0;
+
+            @include RespondTo(IpadDevices) {
+              text-align: left;
+            }
+          }
+
+          > i {
+            margin-left: 0;
+          }
+
+          &.messageMenu {
+            position: relative;
+            @extend %FlexRow-CenterBetween;
+
+            .msgIndicator {
+              background: $BlackColor;
+              color: $WhiteColor;
+              display: inline-block;
+              padding: 1px 5px;
+              margin-left: 5px;
+              position: relative;
+
+              &::after {
+                content: "";
+                @include Absolute($Left: 50%, $Bottom: -7px);
+                transform: translateX(-50%);
+                @include Triangle(TopLeft, 7px, 7px, $BlackColor);
+              }
+            }
+          }
+
+          &.notifMenu {
+            width: 30px;
+            @extend %FlexCol-CenterCenter;
+
+            @include RespondTo(IpadDevices) {
+              width: 100%;
+              flex-direction: row;
+            }
+
+            i {
+              &.unreadMsg {
+                position: relative;
+
+                &::after {
+                  content: "";
+                  @include Absolute($Right: -1px, $Top: -1px);
+                  @include Size(6px, 6px);
+                  background: $BlackColor;
+                  @include BorderRadius(50%);
+                }
+              }
+            }
+          }
+        }
+
+        .headerSubOptions {
+          &.dropdownMenu {
+            width: 280px;
+
+            @include RespondTo(IpadDevices) {
+              width: 100%;
+              position: relative;
+              top: 16px;
+            }
+          }
+
+          .inboxFooter {
+            border-top: 1px solid $BorderDark;
+            text-align: right;
+
+            > a {
+              color: $BlackColor;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+
+          h4 {
+            @include Font(null, 0.8rem, $FontColorDark, normal, 700);
+            width: 100%;
+            padding: 10px 20px 6px 20px;
+            border-bottom: 1px solid $BorderDark;
+          }
+
+          ul {
+            flex-direction: column !important;
+
+            li {
+              width: 100%;
+              padding: 0px;
+
+              .networkSwitch {
+                position: relative;
+                display: flex;
+                padding: 8px;
+                cursor: pointer;
+                @include Size(100%, auto);
+                @include Font(null, 0.9rem, $FontColorDark, null, 600);
+
+                span {
+                  @include Font(null, 0.9rem, $FontColorDark, null, 700);
+                  @include Size(100%, auto);
+                }
+              }
+
+              a {
+                @include Size(100%, auto);
+              }
+
+              .button {
+                @include Size(100%, auto);
+                padding: 12px 20px;
+                text-align: left;
+                @include Font(null, 0.9rem, $FontColorDark, null, 600);
+
+                .buttonText {
+                  flex: 2;
+
+                  span {
+                    display: block;
+                    @include Font(
+                      null,
+                      0.8rem,
+                      rgba($FontColorDark, 0.7),
+                      null,
+                      600
+                    );
+                    margin-left: 0px;
+                  }
+                }
+
+                i {
+                  @include Size(11px, 11px);
+                  @extend %FlexCol-CenterCenter;
+
+                  svg {
+                    @include Size(11px, 11px);
+                  }
+                }
+
+                &:hover {
+                  background-color: lighten($BorderDark, 10%);
+                  @include Transition(0.2s);
+                }
+              }
+            }
+          }
+        }
+
+        &.headerButton {
+          @extend %FlexRow-CenterCenter;
+          flex: 2;
+
+          @include RespondTo(IpadDevices) {
+            display: block;
+            flex: unset;
+            padding-right: 0;
+            text-align: center;
+          }
+
+          > span {
+            flex: 2;
+            display: inline-block;
+          }
+
+          .button {
+            height: auto;
+            border-bottom-width: 1px;
+
+            @include RespondTo(IpadDevices) {
+              font-size: 1rem;
+              padding-right: 0.8rem;
+            }
+          }
+
+          &.mobileUserLogin {
+            display: none;
+
+            @include RespondTo(IpadDevices) {
+              padding: 10px 15px;
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+            }
+
+            button.button {
+              width: 100%;
+            }
+          }
+        }
+
+        &.headerUser {
+          position: relative;
+
+          .headerUserIc {
+            @include Size(32px, 32px);
+            cursor: pointer;
+            @include BorderRadius(50%);
+            background: rgba($BlackColor, 0.1);
+
+            > span {
+              display: inline-block;
+              @include Size(32px, 32px);
+              @include BorderRadius(50%);
+              background: rgba($BlackColor, 0.1);
+            }
+          }
+
+          .headerSubOptions {
+            &.dropdownMenu {
+              width: 200px;
+
+              .displayConnectedWallet {
+                width: 100%;
+                padding: 12px 10px;
+                @extend %FlexRow-StartStart;
+
+                strong {
+                  display: inline-block;
+                  font-weight: 700;
+                  margin-right: 5px;
+                }
+              }
+
+              .changeModeOptions {
+                width: 100%;
+                padding: 12px 10px;
+                cursor: pointer;
+
+                &:hover {
+                  background-color: lighten($BorderDark, 10%);
+                  @include Transition(0.2s);
+                }
+
+                .changeModeOption {
+                  width: 100%;
+                  @extend %FlexRow-CenterBetween;
+
+                  &.hide {
+                    display: none;
+                  }
+
+                  i {
+                    @include Size(18px, 18px);
+                    @extend %FlexCol-CenterCenter;
+
+                    svg {
+                      @include Size(16px, 16px);
+
+                      path,
+                      rect,
+                      circle,
+                      polygon {
+                        fill: $BlackColor;
+                      }
+                    }
+                  }
+
+                  > span {
+                    flex: 2;
+                    margin-left: 15px;
+                    @include Font(null, 0.85rem, $FontColorDark, normal, 600);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.headerUserMobile {
+          position: relative;
+          padding: 0;
+          display: none;
+
+          .headerUserIc {
+            @extend %FlexRow-CenterBetween;
+            padding: 15px 20px;
+
+            .userSortInfo {
+              @extend %FlexRow-CenterBetween;
+              width: 100%;
+              cursor: pointer;
+
+              > span {
+                display: inline-block;
+                @include Size(32px, 32px);
+                @include BorderRadius(50%);
+                background: rgba($BlackColor, 0.1);
+              }
+
+              .connectedUserWlt {
+                flex: 2;
+                padding: 0 12px;
+
+                .displayConnectedWallet {
+                  @include Flexbox;
+                  @include FlexDirection(column);
+
+                  @include RespondTo(IpadDevices) {
+                    font-size: 1rem;
+                  }
+                }
+              }
+            }
+
+            > i {
+              width: 24px;
+
+              svg {
+                @include Size(18px, 18px);
+              }
+            }
+          }
+
+          .headerSubOptions {
+            &.dropdownMenu {
+              width: 100%;
+              position: static;
+              box-shadow: none;
+              border: none;
+              border-top: 1px solid $BorderDark;
+
+              ul {
+                border: none;
+                padding: 0;
+
+                li {
+                  border-bottom: none;
+
+                  a {
+                    padding: 15px 20px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.mobileExtraLi {
+          .changeModeOptions,
+          > a {
+            width: 100%;
+            @extend %FlexRow-CenterBetween;
+            flex-direction: row-reverse;
+
+            .changeModeOption {
+              width: 100%;
+              @extend %FlexRow-CenterBetween;
+              flex-direction: row-reverse;
+
+              &.hide {
+                display: none;
+              }
+            }
+
+            i {
+              width: 30px;
+
+              svg {
+                @include Size(24px, 24px);
+              }
+
+              + span {
+                flex: 2;
+                font-size: 1rem;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .notificationDropdown {
+    width: 450px;
+    overflow: auto;
+    max-height: 310px;
+    @include Absolute($Right: 0px, $Top: 100%);
+    background: $WhiteColor;
+    border: 1px solid $BorderDark;
+
+    @include RespondTo(IpadDevices) {
+      position: static;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .notificationHeader {
+      border-bottom: 1px solid $BorderDark;
+      padding: 10px 14px;
+      @extend %FlexRow-CenterBetween;
+
+      @include RespondTo(IpadDevices) {
+        padding: 7px 10px;
+      }
+
+      h2 {
+        @include Font(null, 1rem, $FontColorDark, null, 700);
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.9rem;
+        }
+      }
+
+      button.button {
+        background: none;
+        @include Font(null, 0.8rem, $FontColorDark, null, 600);
+        text-decoration: underline;
+        padding: 0;
+        height: auto;
+        border: none;
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    .notificationContainer {
+      border-bottom: 1px solid $BorderDark;
+      padding: 8px 0;
+      max-height: 240px;
+      overflow: auto;
+
+      @include RespondTo(IpadDevices) {
+        max-height: unset;
+        padding: 7px 0;
+      }
+
+      .notifBlock {
+        @extend %FlexRow-StartBetween;
+        padding: 8px 15px;
+
+        @include RespondTo(IpadDevices) {
+          padding: 5px 10px;
+        }
+
+        .notifBlockCircle {
+          @include Size(12px, 12px);
+          @include BorderRadius(50%);
+          background: rgba($BorderDark, 0.5);
+          border: 1px solid $BorderDark;
+
+          @include RespondTo(IpadDevices) {
+            @include Size(10px, 10px);
+          }
+        }
+
+        .notifIcon {
+          @include Size(44px, 44px);
+          @include BorderRadius(50%);
+          background: rgba($BorderDark, 0.5);
+
+          @include RespondTo(IpadDevices) {
+            @include Size(34px, 34px);
+          }
+        }
+
+        .notifContent {
+          flex: 2;
+          padding-left: 10px;
+
+          @include RespondTo(IpadDevices) {
+            padding-left: 7px;
+          }
+
+          p {
+            @include Font(null, 0.9rem, $BlackColor, null, 400);
+
+            @include RespondTo(IpadDevices) {
+              font-size: 0.8rem;
+            }
+
+            &.notifTime {
+              color: rgba($FontColorDark, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.layoutSeller {
+  header {
+    nav.navbarMain {
+      @include RespondTo(IpadDevices) {
+        top: 51px;
+      }
+    }
+  }
+}
+
+.darkMode {
+  header {
+    background: $DarkBg;
+    border-bottom-color: $BorderLight;
+
+    .mobileNavbar {
+      i {
+        svg {
+          path {
+            fill: $FontColorLight;
+          }
+        }
+      }
+    }
+
+    .headerSearch {
+      .searchContainer {
+        border-color: $BorderLight;
+        background: $DarkBg;
+
+        i.searchIcon {
+          svg {
+            path {
+              fill: $FontColorLight;
+            }
+          }
+        }
+
+        > div {
+          > div {
+            background: $DarkBg !important;
+            border: 1px solid $BorderLight;
+          }
+        }
+
+        .autoSuggestDropdown {
+          &:hover {
+            background: lighten($DarkBg, 5%) !important;
+          }
+        }
+
+        .searchControl {
+          color: $FontColorLight;
+        }
+      }
+    }
+
+    nav.navbarMain {
+      background: $DarkBg;
+
+      ul {
+        li {
+          border-bottom-color: $BorderLight;
+
+          .earnings {
+            .button.transparent {
+              color: $FontColorLight;
+            }
+          }
+
+          a {
+            color: $FontColorLight;
+          }
+
+          > .button.transparent {
+            color: $FontColorLight;
+
+            > i {
+              svg {
+                path {
+                  fill: $FontColorLight;
+                }
+              }
+            }
+
+            &.messageMenu {
+              .msgIndicator {
+                background: $LightBlueColor;
+                color: $WhiteColor;
+
+                &::after {
+                  border-color: $LightBlueColor transparent transparent
+                    transparent;
+                }
+              }
+            }
+
+            &.notifMenu {
+              position: relative;
+
+              i {
+                &.unreadMsg {
+                  &::after {
+                    background: $WhiteColor;
+                  }
+
+                  svg {
+                    path {
+                      fill: $FontColorLight;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .headerSubOptions {
+            h4 {
+              color: $FontColorLight;
+              border-bottom: 1px solid $BorderLight;
+            }
+
+            ul {
+              li {
+                .networkSwitch {
+                  color: $FontColorLight;
+
+                  &:hover {
+                    background-color: darken($DarkBg, 2%);
+                  }
+
+                  span {
+                    color: $FontColorLight;
+                  }
+                }
+
+                .button {
+                  color: $FontColorLight;
+
+                  .buttonText {
+                    span {
+                      color: rgba($FontColorLight, 0.7);
+                    }
+                  }
+
+                  &:hover {
+                    background-color: darken($DarkBg, 2%);
+                  }
+                }
+              }
+            }
+
+            .inboxFooter {
+              border-top-color: $BorderLight;
+
+              > a {
+                color: $WhiteColor;
+              }
+            }
+          }
+
+          &.headerUser {
+            .headerSubOptions {
+              &.dropdownMenu {
+                .changeModeOptions {
+                  &:hover {
+                    background-color: darken($DarkBg, 2%);
+
+                    .changeModeOption {
+                      i {
+                        svg {
+                          path,
+                          rect,
+                          circle,
+                          polygon {
+                            fill: $LightBlueColor;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .changeModeOption {
+                    i {
+                      svg {
+                        path,
+                        rect,
+                        circle,
+                        polygon {
+                          fill: $FontColorLight;
+                        }
+                      }
+                    }
+
+                    > span {
+                      color: $FontColorLight;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.headerUserMobile {
+            .headerUserIc {
+              > i {
+                svg {
+                  path {
+                    fill: $FontColorLight;
+                  }
+                }
+              }
+            }
+
+            .headerSubOptions {
+              &.dropdownMenu {
+                border-top-color: $BorderLight;
+              }
+            }
+          }
+
+          &.mobileExtraLi {
+            .changeModeOptions,
+            i {
+              svg {
+                path {
+                  fill: $FontColorLight;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .notificationDropdown {
+      background: $DarkBg;
+      border-color: $BorderLight;
+
+      .notificationHeader {
+        border-bottom-color: $BorderLight;
+
+        h2 {
+          color: $FontColorLight;
+        }
+
+        button.button {
+          color: $FontColorLight;
+        }
+      }
+
+      .notificationContainer {
+        background-color: $DarkBg;
+        border-bottom-color: $BorderLight;
+
+        .notifBlock {
+          .notifBlockCircle {
+            background: rgba($BorderLight, 0.5);
+            border-color: $BorderLight;
+          }
+
+          .notifIcon {
+            background: rgba($BorderLight, 0.5);
+          }
+
+          .notifContent {
+            p {
+              color: $FontColorLight;
+
+              &.notifTime {
+                color: rgba($FontColorLight, 0.5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

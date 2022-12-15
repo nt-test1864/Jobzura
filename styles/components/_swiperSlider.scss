@@ -1,0 +1,23 @@
+.swiper {
+  .swiper-wrapper {
+    .swiper-slide {
+      display: block;
+    }
+  }
+
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      background-color: $SecondaryColor;
+      opacity: 0.4;
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    color: $WhiteColor;
+  }
+}

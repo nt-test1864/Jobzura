@@ -1,0 +1,157 @@
+.tableNav {
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+  border-bottom: 1px solid $BorderDark;
+
+  @include RespondTo(IpadDevices) {
+    flex-flow: wrap;
+  }
+
+  .tabList-ul {
+    width: 100%;
+    @include Flexbox;
+    @include FlexFlow(nowrap);
+
+    @include RespondTo(IpadDevices) {
+      flex-flow: wrap;
+    }
+
+    .tabList-li {
+      @extend %FlexRow-CenterCenter;
+      padding: 15px 0 13px 0;
+      margin-right: 30px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+
+      @include RespondTo(IpadDevices) {
+        padding: 10px 0 8px 0;
+        margin-right: 0px;
+        width: 100%;
+        display: none;
+      }
+
+      span {
+        display: inline-block;
+        @include Font(null, 0.75rem, $WhiteColor, 0.75rem, 600);
+        margin-left: 8px;
+        padding: 6px 7px 5px 7px;
+        background: rgba($BlackColor, 0.5);
+        border-radius: 50px;
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.7rem;
+          line-height: 0.7rem;
+        }
+      }
+
+      h3 {
+        @include Font(null, 1rem, rgba($FontColorDark, 0.6), null, 600);
+        cursor: pointer;
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.9rem;
+        }
+      }
+
+      &.active {
+        color: $FontColorDark;
+        border-bottom-color: $BlackColor;
+
+        @include RespondTo(IpadDevices) {
+          display: flex;
+        }
+
+        span {
+          background: rgba($BlackColor, 1);
+          color: $WhiteColor;
+        }
+
+        h3 {
+          color: $FontColorDark;
+        }
+      }
+    }
+
+    &.showFullList {
+      .tabList-li {
+        @include RespondTo(IpadDevices) {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .mobileTabListTrigger {
+    display: none;
+
+    @include RespondTo(IpadDevices) {
+      display: block;
+      @include Absolute($Right: 10px, $Top: 10px);
+    }
+
+    i {
+      @include Size(20px, 20px);
+
+      svg {
+        @include Size(20px, 20px);
+      }
+    }
+  }
+}
+
+.tableContainer {
+  border: 1px solid $BorderDark;
+  margin: 30px 0;
+
+  @include RespondTo(MobileDevices) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.darkMode {
+  .tableNav {
+    border-bottom-color: $BorderLight;
+
+    .tabList-ul {
+      .tabList-li {
+        span {
+          background: $FontColorDark;
+          color: $WhiteColor;
+        }
+
+        h3 {
+          color: rgba($FontColorLight, 0.6);
+        }
+
+        &.active {
+          color: $FontColorDark;
+          border-bottom-color: $LightBlueColor;
+
+          h3 {
+            color: $WhiteColor;
+          }
+
+          span {
+            background: $LightBlueColor;
+            color: $WhiteColor;
+          }
+        }
+      }
+    }
+
+    .mobileTabListTrigger {
+      i {
+        svg {
+          path {
+            fill: $FontColorLight;
+          }
+        }
+      }
+    }
+  }
+
+  .tableContainer {
+    border-color: $BorderLight;
+  }
+}

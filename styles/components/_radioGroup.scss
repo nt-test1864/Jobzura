@@ -1,0 +1,167 @@
+.radioGroupMain {
+  @include Flexbox;
+  @include FlexFlow(wrap);
+  // border-top: 1px solid $BorderDark;
+  // border-left: 1px solid $BorderDark;
+  // @include BorderRadius(4px);
+  overflow: hidden;
+
+  @include RespondTo(MobileDevices) {
+    @include FlexFlow(wrap);
+  }
+
+  .radioItem {
+    flex: 2;
+    // border-right: 1px solid $BorderDark;
+    // border-bottom: 1px solid $BorderDark;
+
+    .radioInput {
+      display: none;
+
+      + .radioLabel {
+        white-space: nowrap;
+        display: block;
+        text-align: center;
+        padding: 10px 15px;
+        @include Font(null, 0.85rem, $FontColorDark, null, 600);
+        cursor: pointer;
+      }
+
+      &:checked {
+        + .radioLabel {
+          background: $BlackColor;
+          color: $WhiteColor;
+          white-space: nowrap;
+        }
+      }
+
+      &:disabled {
+        + .radioLabel {
+          background: rgba($BlackColor, 0.1);
+          color: rgba($FontColorDark, 0.5);
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+.radioListMain {
+  @include Flexbox;
+  @include FlexFlow(wrap);
+
+  .radioItem {
+    + .radioItem {
+      margin-left: 12px;
+    }
+
+    .radioInput {
+      display: none;
+
+      + .radioLabel {
+        @include Font(null, 0.85rem, $FontColorDark, null, 600);
+        cursor: pointer;
+        position: relative;
+        padding-left: 24px;
+
+        &::before,
+        &::after {
+          content: "";
+          @include Absolute($Left: 0px);
+        }
+
+        &::before {
+          @include Size(16px, 16px);
+          @include BorderRadius(50%);
+          border: 1px solid $BorderDark;
+        }
+
+        &::after {
+          @include Size(10px, 10px);
+          @include BorderRadius(50%);
+          left: 4px;
+          top: 4px;
+        }
+      }
+
+      &:checked {
+        + .radioLabel {
+          color: $PrimaryColor;
+
+          &::before {
+            border-color: $PrimaryColor;
+          }
+          &::after {
+            background-color: $PrimaryColor;
+          }
+        }
+      }
+
+      &:disabled {
+      }
+    }
+  }
+}
+
+.darkMode {
+  .radioGroupMain {
+    border-top-color: $BorderLight;
+    border-left-color: $BorderLight;
+
+    .radioItem {
+      border-right-color: $BorderLight;
+      border-bottom-color: $BorderLight;
+
+      + .radioItem {
+        border-left-color: $BorderLight;
+      }
+
+      .radioInput {
+        + .radioLabel {
+          color: $FontColorLight;
+        }
+
+        &:checked {
+          + .radioLabel {
+            background: $LightBlueColor;
+            color: $WhiteColor;
+          }
+        }
+
+        &:disabled {
+          + .radioLabel {
+            background: rgba($WhiteColor, 0.1);
+            color: rgba($FontColorLight, 0.5);
+          }
+        }
+      }
+    }
+  }
+
+  .radioListMain {
+    .radioItem {
+      .radioInput {
+        + .radioLabel {
+          color: $FontColorLight;
+
+          &::before {
+            border-color: $BorderLight;
+          }
+        }
+
+        &:checked {
+          + .radioLabel {
+            color: $LightBlueColor;
+
+            &::before {
+              border-color: $LightBlueColor;
+            }
+            &::after {
+              background-color: $LightBlueColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

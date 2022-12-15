@@ -1,0 +1,177 @@
+.jobDetails {
+  @extend %FlexRow;
+
+  .jobThumb {
+    @include Size(55px, 42px);
+    background-color: rgba($BorderDark, 0.5);
+
+    @include RespondTo(MobileDevices) {
+      @include Size(50px, 36px);
+    }
+  }
+
+  .jobSortInfo {
+    width: calc(100% - 70px);
+    max-width: 300px;
+    flex: 2;
+    margin-left: 10px;
+
+    h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.1rem;
+      white-space: normal;
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.95rem;
+        line-height: 0.95rem;
+      }
+    }
+
+    p {
+      width: 100%;
+      color: rgba($FontColorDark, 0.7);
+      font-weight: 400;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+.sellerDetails {
+  @extend %FlexRow-CenterBetween;
+
+  .sellerPic {
+    @include Size(26px, 26px);
+    background-color: rgba($BorderDark, 0.5);
+    @include BorderRadius(50%);
+  }
+
+  .sellerSortInfo {
+    flex: 2;
+    margin-left: 10px;
+  }
+}
+
+.moreOptionDropdown {
+  width: 150px;
+  @include Absolute($Bottom: 0%, $Right: 35px);
+  background-color: $WhiteColor;
+  color: $FontColorDark;
+  z-index: 99;
+
+  span {
+    display: block;
+    border: 1px solid $BorderDark;
+    padding: 9px 14px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.ordersTableGrid {
+  .tableGridUi table tbody tr td,
+  .tableGridUi table thead tr th {
+    padding: 10px;
+
+    &:nth-child(1) {
+      width: 380px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+
+      .jobDetails {
+        @include RespondTo(IpadDevices) {
+          padding-right: 40px;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      width: 150px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(3) {
+      width: 120px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(4) {
+      width: 120px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(5) {
+      width: 100px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(6) {
+      width: 265px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+
+    &:nth-child(7) {
+      width: 50px;
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+      }
+    }
+  }
+
+  .tableGridUi table tbody tr td {
+    &:last-child {
+      @include RespondTo(IpadDevices) {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.darkMode {
+  .jobDetails {
+    .jobThumb {
+      background-color: rgba($BorderLight, 0.5);
+    }
+
+    .jobSortInfo {
+      h3 {
+        color: $FontColorLight;
+      }
+
+      p {
+        color: rgba($FontColorLight, 0.7);
+      }
+    }
+  }
+
+  .sellerDetails {
+    .sellerPic {
+      background-color: rgba($BorderLight, 0.5);
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.menu {
+  position: relative;
+  width: 100%;
+
+  .menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+
+    .networkSwitch {
+      > span {
+        text-align: left;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .menuItems {
+    button {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      span {
+        @include Font(null, 0.9rem, rgba($FontColorDark, 100%), null, 600);
+
+        + span {
+          flex: 2;
+          text-align: left;
+          padding-left: 7px;
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .menu {
+    .menuItems {
+      button {
+        span {
+          color: rgba($FontColorLight, 100%);
+        }
+      }
+    }
+  }
+}

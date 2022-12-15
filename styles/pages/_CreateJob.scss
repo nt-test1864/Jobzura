@@ -1,0 +1,352 @@
+.createJobWrapper {
+  width: 96%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.CreateJobSteps {
+  border-bottom: 1px solid $BorderDark;
+  padding: 10px 0;
+
+  ul {
+    @include Flexbox;
+    @include FlexFlow(nowrap);
+    @include JustifyContent(space-between);
+
+    li {
+      flex: 2;
+      @extend %FlexRow-CenterBetween;
+      position: relative;
+
+      &::after {
+        content: "";
+        @include Size(9px, 9px);
+        @include Absolute($Right: 32px, $Top: 50%);
+        transform: translateY(-50%);
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 6 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.442383 8.4425L3.87738 5L0.442382 1.5575L1.49988 0.5L5.99988 5L1.49988 9.5L0.442383 8.4425Z' fill='%23323232'/%3E%3C/svg%3E")
+          no-repeat center center;
+        background-size: contain;
+
+        @include RespondTo(MobileDevices) {
+          display: none;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+
+      i {
+        @include Size(28px, 28px);
+        @extend %FlexCol-CenterCenter;
+        background: $BorderDark;
+        @include BorderRadius(50%);
+        margin-right: 10px;
+        @include Font(null, 0.86rem, rgba($FontColorDark, 0.5), null, 600);
+        font-style: normal;
+      }
+
+      span {
+        flex: 2;
+        @include Font(null, 0.86rem, rgba($FontColorDark, 0.7), null, 600);
+      }
+
+      &.currentStep {
+        i {
+          color: $BlackColor;
+          background: darken($BorderDark, 10%);
+        }
+
+        span {
+          color: $BlackColor;
+          font-weight: 700;
+        }
+      }
+
+      &.completedStep {
+        i {
+          color: $WhiteColor;
+          background: $BlackColor;
+        }
+
+        span {
+          color: $BlackColor;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.createJobContainer {
+  border: 1px solid $BorderDark;
+  border-top: none;
+  padding: 30px;
+
+  @include RespondTo(MobileDevices) {
+    padding: 20px;
+  }
+
+  .formRow {
+    margin-bottom: 25px;
+
+    h3 {
+      @include Font(null, 1rem, $FontColorDark, null, 700);
+    }
+
+    p {
+      @include Font(null, 0.87rem, rgba($FontColorDark, 0.75), null, 400);
+      margin-bottom: 10px;
+    }
+
+    .mergeControl {
+      @include Flexbox;
+      @include FlexFlow(nowrap);
+    }
+
+    .jobCurrencyDropdown {
+      width: 100px;
+    }
+
+    .ant-form-item {
+      .button.withIcon {
+        flex-direction: column;
+        height: auto;
+
+        > i {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+.formFooter {
+  text-align: right;
+  padding: 20px 0;
+}
+
+h2.stepHeader {
+  @include Font(null, 1.2rem, $FontColorDark, null, 700);
+}
+
+.stepFormBlockMain {
+  margin-top: 15px;
+
+  .stepFormBlockHeader {
+    background: rgba($BorderDark, 0.5);
+    border-top: 1px solid $BorderDark;
+    border-bottom: 1px solid $BorderDark;
+    margin: 0 -30px;
+    @extend %FlexRow-CenterBetween;
+    padding: 6px 30px;
+
+    h3 {
+      @include Font(null, 1rem, $FontColorDark, null, 700);
+      text-transform: uppercase;
+
+      span {
+        font-weight: 400;
+        color: rgba($FontColorDark, 0.5);
+        text-transform: none;
+      }
+    }
+
+    .stepFormBlockHeaderActions {
+      > button {
+        background: none;
+        border: none;
+        @include Font(null, 0.9rem, $BlackColor, null, 700);
+        cursor: pointer;
+      }
+    }
+  }
+
+  .stepFormContainer {
+    margin-top: 15px;
+  }
+}
+
+.jobImagesGallery {
+  @include Flexbox;
+  @include FlexFlow(wrap);
+  margin: 0 -10px;
+
+  .jobImageBlock {
+    width: 50%;
+    padding: 10px;
+
+    .jobImageBlockInner {
+      @include Size(100%, 180px);
+      background: rgba($BorderDark, 0.5);
+      border: 1px solid $BorderDark;
+      @extend %FlexCol-CenterCenter;
+      position: relative;
+
+      label {
+        @include Font(null, 1rem, $BlackColor, null, 600);
+        @extend %FlexCol-CenterCenter;
+
+        i {
+          @include Size(50px, 50px);
+          @extend %FlexCol-CenterCenter;
+
+          svg {
+            @include Size(50px, 50px);
+
+            path {
+              fill: rgba($FontColorDark, 0.3);
+            }
+          }
+        }
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+    }
+  }
+}
+
+.jobPublishedSuccess {
+  padding: 25px;
+  @extend %FlexCol-CenterCenter;
+
+  i {
+    @include Size(44px, 44px);
+    @include BorderRadius(50%);
+    background: $BorderDark;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    @include Font(null, 1.3rem, $BlackColor, null, 700);
+  }
+
+  p {
+    @include Font(null, 1rem, rgba($FontColorDark, 0.5), null, 600);
+  }
+}
+
+.darkMode {
+  .CreateJobSteps {
+    border-bottom-color: $BorderLight;
+
+    ul {
+      li {
+        &::after {
+          background: url("data:image/svg+xml,%3Csvg viewBox='0 0 6 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.442383 8.4425L3.87738 5L0.442382 1.5575L1.49988 0.5L5.99988 5L1.49988 9.5L0.442383 8.4425Z' fill='%23FFFFFF'/%3E%3C/svg%3E")
+            no-repeat center center;
+        }
+
+        i {
+          background: $BorderLight;
+          color: rgba($FontColorLight, 0.5);
+        }
+
+        span {
+          color: rgba($FontColorLight, 0.7);
+        }
+
+        &.currentStep {
+          i {
+            color: $WhiteColor;
+            background: lighten($BorderLight, 10%);
+          }
+
+          span {
+            color: $WhiteColor;
+          }
+        }
+
+        &.completedStep {
+          i {
+            color: $WhiteColor;
+            background: $BlackColor;
+          }
+
+          span {
+            color: $WhiteColor;
+          }
+        }
+      }
+    }
+  }
+
+  .createJobContainer {
+    border-color: $BorderLight;
+
+    .formRow {
+      h3 {
+        color: $FontColorLight;
+      }
+
+      p {
+        color: rgba($FontColorLight, 0.75);
+      }
+    }
+  }
+
+  h2.stepHeader {
+    color: $FontColorLight;
+  }
+
+  .stepFormBlockMain {
+    .stepFormBlockHeader {
+      background: rgba($BorderLight, 0.5);
+      border-top-color: $BorderLight;
+      border-bottom-color: $BorderLight;
+
+      h3 {
+        color: $FontColorLight;
+
+        span {
+          color: rgba($FontColorLight, 0.5);
+        }
+      }
+
+      .stepFormBlockHeaderActions {
+        > button {
+          color: $WhiteColor;
+        }
+      }
+    }
+  }
+
+  .jobImagesGallery {
+    .jobImageBlock {
+      .jobImageBlockInner {
+        background: rgba($BorderLight, 0.5);
+        border-color: $BorderLight;
+
+        label {
+          color: $WhiteColor;
+
+          i {
+            svg {
+              path {
+                fill: rgba($FontColorLight, 0.3);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .jobPublishedSuccess {
+    i {
+      background: $BorderLight;
+    }
+
+    h2 {
+      color: $WhiteColor;
+    }
+
+    p {
+      color: rgba($FontColorLight, 0.5);
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.jobsTableGrid {
+  .tableGridUi {
+    table {
+      tbody {
+        tr {
+          td {
+            &:first-child {
+              width: 20px;
+
+              @include RespondTo(IpadDevices) {
+                width: 100%;
+              }
+            }
+
+            &:last-child {
+              .button {
+                @include RespondTo(IpadDevices) {
+                  width: 100%;
+                  text-align: center;
+                }
+
+                &.moreButton {
+                  @include RespondTo(IpadDevices) {
+                    width: auto;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.tableGridHeaderWithActions {
+  padding: 10px !important;
+}
+
+.tableGridHeader {
+  @extend %FlexRow-CenterBetween;
+
+  .tableHeaderTitle {
+    flex: 2;
+    padding: 0 6px;
+  }
+
+  .tableHeaderActions {
+    @extend %FlexRow-CenterBetween;
+
+    .customDropdownControl {
+      font-weight: 400;
+    }
+
+    .button {
+      margin-left: 10px;
+    }
+  }
+}

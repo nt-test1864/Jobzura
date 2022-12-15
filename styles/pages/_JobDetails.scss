@@ -1,0 +1,453 @@
+.jobDetailsWpr {
+  @extend %FlexRow-StartBetween;
+
+  @include RespondTo(IpadDevices) {
+    flex-direction: column;
+  }
+}
+
+.jobDetailsMain {
+  width: 750px;
+  margin-top: 3em;
+
+  @media only screen and (max-width: 1150px) {
+    width: calc(100% - 330px);
+  }
+
+  @include RespondTo(SmallDesktop) {
+    width: calc(100% - 265px);
+  }
+
+  @include RespondTo(IpadDevices) {
+    width: 100%;
+  }
+
+  @include RespondTo(MobileDevices) {
+    margin-top: 20px;
+  }
+
+  .jobDetailsTitle {
+    @include Font(null, 1.7rem, $FontColorDark, null, 700);
+
+    @include RespondTo(SmallDesktop) {
+      font-size: 1.5rem;
+    }
+
+    @include RespondTo(IpadDevices) {
+      font-size: 1.17rem;
+    }
+  }
+
+  .jobDetailsHeader {
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+
+    @include RespondTo(MobileDevices) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .jobHost {
+      display: flex;
+      align-items: center;
+
+      .profilePic {
+        @include Size(42px, 42px);
+        margin-right: 10px;
+
+        @include RespondTo(SmallDesktop) {
+          @include Size(36px, 36px);
+        }
+
+        @include RespondTo(IpadDevices) {
+          @include Size(28px, 28px);
+        }
+      }
+    }
+
+    &--right {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+
+      @include RespondTo(MobileDevices) {
+        margin-left: 0px;
+        margin-top: 10px;
+      }
+
+      .ratingCounts {
+        margin-bottom: 1px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .jobDetailsDescription {
+    .jobDetailsDescriptionImage {
+      margin-top: 1em;
+      width: 100%;
+
+      .placeholderImage {
+        @extend %placeholderImage;
+        @include Size(100%, 100%);
+        background-repeat: no-repeat;
+        background-size: 25%;
+        background-position: center;
+        opacity: 0.2;
+      }
+      
+      .swiper {
+        .swiper-wrapper {
+          .swiper-slide {
+            span {
+              width: 100% !important;
+              height: 100% !important;
+
+              img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+
+        &.jobSliderThumbnails {
+          .swiper-slide {
+            border: 2px solid transparent;
+            height: 99px;
+
+            @include RespondTo(SmallDesktop) {
+              height: 75px;
+            }
+
+            @include RespondTo(IpadDevices) {
+              height: 50px;
+            }
+
+            &.swiper-slide-thumb-active {
+              border-color: $BlackColor;
+            }
+          }
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          @include Size(62px, 62px);
+          background: $BorderDark;
+          @include BorderRadius(50%);
+
+          @include RespondTo(SmallDesktop) {
+            @include Size(48px, 48px);
+          }
+
+          @include RespondTo(IpadDevices) {
+            @include Size(38px, 38px);
+          }
+
+          &::after {
+            font-size: 1.5rem;
+            color: $BlackColor;
+
+            @include RespondTo(SmallDesktop) {
+              font-size: 1.2rem;
+            }
+
+            @include RespondTo(IpadDevices) {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+
+    .jobDetailsDescriptionText {
+      margin-top: 1em;
+      @include Font(null, 1rem, $FontColorDark, 1.3rem, null);
+
+      @include RespondTo(SmallDesktop) {
+        font-size: 0.9rem;
+        line-height: normal;
+      }
+
+      @include RespondTo(IpadDevices) {
+        font-size: 0.8rem;
+      }
+    }
+
+    .jobDetailsDescriptionAbout {
+      margin: 20px 0;
+
+      h2 {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}
+
+.buySection {
+  width: 350px;
+  margin-top: 3em;
+
+  @media only screen and (max-width: 1150px) {
+    width: 300px;
+  }
+
+  @include RespondTo(SmallDesktop) {
+    width: 250px;
+  }
+
+  @include RespondTo(IpadDevices) {
+    width: 100%;
+  }
+
+  @include RespondTo(MobileDevices) {
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .buySectionContainer {
+    padding: 1.5em;
+    border: 1px solid $BorderDark;
+    display: flex;
+    flex-direction: column;
+
+    .actionButton {
+      button {
+        margin-top: 1em;
+        width: 100%;
+      }
+
+      &--bottom > button {
+        width: 100%;
+        margin-top: 1em;
+        background: $WhiteColor;
+        border: 1px solid $BorderLight;
+      }
+    }
+  }
+}
+
+.aboutContainer {
+  width: 700px;
+  border: 1px solid $BorderDark;
+
+  @media only screen and (max-width: 1150px) {
+    width: 100%;
+  }
+
+  .aboutSeller {
+    padding: 1.5em;
+
+    @include RespondTo(MobileDevices) {
+      padding: 10px;
+    }
+
+    .aboutSeller__header {
+      display: flex;
+      justify-content: space-between;
+
+      @include RespondTo(MobileDevices) {
+        flex-direction: column;
+      }
+
+      &--left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .aboutSeller__header__image {
+          @include Size(62px, 62px);
+          object-fit: cover;
+
+          @include RespondTo(SmallDesktop) {
+            @include Size(50px, 50px);
+          }
+
+          @include RespondTo(IpadDevices) {
+            @include Size(42px, 42px);
+          }
+        }
+
+        .aboutSeller__header__details {
+          .userTimezone {
+            h4 {
+              color: rgba($FontColorDark, 0.7);
+              font-weight: 400;
+            }
+          }
+        }
+      }
+
+      &--right {
+        @include RespondTo(MobileDevices) {
+          margin-top: 10px;
+        }
+
+        button {
+          padding: 0.5em 1em;
+          border: 1px solid $BorderDark;
+          background-color: $WhiteColor;
+          color: $BlackColor;
+          font-weight: 700;
+          cursor: pointer;
+
+          &:hover {
+            background: $BlackColor;
+            border-color: $BlackColor;
+            color: $WhiteColor;
+          }
+        }
+      }
+    }
+
+    .aboutSeller__description {
+      margin-top: 1em;
+
+      @include RespondTo(MobileDevices) {
+        margin-top: 10px;
+      }
+    }
+
+    .aboutSeller__skills {
+      display: flex;
+      margin-top: 1em;
+      gap: 0.5em;
+      flex-flow: wrap;
+
+      @include RespondTo(MobileDevices) {
+        margin-top: 10px;
+      }
+
+      span {
+        padding: 5px 15px;
+        border-radius: 9999px;
+        font-weight: 600;
+        background: #eef1f9;
+
+        @include RespondTo(MobileDevices) {
+          padding: 3px 10px;
+        }
+      }
+    }
+
+    .aboutSeller_stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1em 2em 0 0;
+      font-weight: 700;
+
+      @include RespondTo(MobileDevices) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .aboutSeller__reviews {
+        display: flex;
+        align-items: center;
+
+        .ratingCounts {
+          margin: 0 0.3em 0.15em 0.3em;
+          font-size: 1.2em;
+
+          @include RespondTo(MobileDevices) {
+            font-size: 1em;
+          }
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .jobDetailsMain {
+    .jobDetailsTitle {
+      color: $FontColorLight;
+    }
+
+    .jobDetailsDescription {
+      .jobDetailsDescriptionImage {
+        .swiper {
+          &.jobSliderThumbnails {
+            .swiper-slide {
+              &.swiper-slide-thumb-active {
+                border-color: $WhiteColor;
+              }
+            }
+          }
+
+          .swiper-button-next,
+          .swiper-button-prev {
+            background: $BorderLight;
+
+            &::after {
+              color: $WhiteColor;
+            }
+          }
+        }
+      }
+
+      .jobDetailsDescriptionText {
+        color: $FontColorLight;
+      }
+    }
+  }
+
+  .buySection {
+    .buySectionContainer {
+      border-color: $BorderLight;
+
+      .actionButton {
+        &--bottom > button {
+          background: $DarkBlueBg;
+          border-color: transparent;
+          color: $WhiteColor;
+
+          &:hover {
+            background: lighten($DarkBlueBg, 7%);
+            border-color: lighten($DarkBlueBg, 7%);
+            @include BoxShadow(2px 2px 5px rgba($DarkBlueBg, 0.4));
+          }
+        }
+      }
+    }
+  }
+
+  .aboutContainer {
+    border-color: $BorderLight;
+
+    .aboutSeller {
+      .aboutSeller__header {
+        &--left {
+          .aboutSeller__header__details {
+            .userTimezone {
+              h4 {
+                color: rgba($FontColorLight, 0.7);
+              }
+            }
+          }
+        }
+
+        &--right {
+          button {
+            border-color: $DarkBlueBg;
+            background-color: transparent;
+            color: $FontColorLight;
+
+            @include RespondTo(MobileDevices) {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .aboutSeller__skills {
+        span {
+          background: rgba($BorderLight, 0.7);
+        }
+      }
+    }
+  }
+}

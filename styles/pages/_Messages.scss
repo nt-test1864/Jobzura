@@ -1,0 +1,711 @@
+.inbox {
+  @include Size(100%, calc(100vh - 65px));
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+  border-left: 1px solid $BorderDark;
+  border-right: 1px solid $BorderDark;
+
+  @include RespondTo(IpadDevices) {
+    flex-flow: wrap;
+    @include Size(100%, calc(100vh - 86px));
+  }
+}
+
+.inboxList {
+  @include Size(350px, 100%);
+  border-right: 1px solid $BorderDark;
+  @include Flexbox;
+  @include FlexDirection(column);
+
+  @include RespondTo(SmallDesktop) {
+    width: 290px;
+  }
+
+  @include RespondTo(IpadDevices) {
+    width: 100%;
+    display: none;
+    border-right: none;
+    position: relative;
+  }
+
+  &.visibleList {
+    @include RespondTo(IpadDevices) {
+      display: block;
+    }
+  }
+
+  .inboxHeader {
+    @include Size(100%, 60px);
+    @extend %FlexRow-CenterBetween;
+    border-bottom: 1px solid $BorderDark;
+    padding: 0px 10px;
+    flex-shrink: 0;
+    @include BoxShadow(1px 1px 1px rgba($BlackColor, 0.05));
+
+    @include RespondTo(IpadDevices) {
+      height: 46px;
+    }
+
+    .inboxHeaderSort {
+      @include Font(null, 1rem, $FontColorDark, null, 500);
+    }
+
+    .inboxHeaderSearch {
+      @extend %FlexCol-CenterCenter;
+    }
+  }
+
+  .inboxListContainer {
+    overflow-y: auto;
+    flex-grow: 1;
+
+    .inboxListItem {
+      @extend %FlexRow-CenterBetween;
+      border-bottom: 1px solid $BorderDark;
+      padding: 10px;
+      cursor: pointer;
+
+      .inboxUserThumb {
+        width: 62px;
+        position: relative;
+
+        @include RespondTo(IpadDevices) {
+          width: 52px;
+        }
+
+        > span.profilePic {
+          display: inline-block;
+          @include Size(62px, 62px);
+          @include BorderRadius(50%);
+          background: rgba($BorderDark, 0.3);
+
+          @include RespondTo(IpadDevices) {
+            @include Size(52px, 52px);
+          }
+        }
+
+        .userAvailabilityIc {
+          @include Absolute($Bottom: 5px, $Right: 5px);
+          @include Size(15px, 15px);
+          @include BorderRadius(50%);
+          background: rgba($BlackColor, 0.3);
+
+          &.isAvailable {
+            background: green;
+          }
+        }
+      }
+
+      .inboxUserSort {
+        flex: 2;
+        @include Flexbox;
+        @include FlexFlow(nowrap);
+        @include AlignItems(center);
+        margin-left: 10px;
+
+        .inboxSortLeft {
+          flex: 2;
+
+          .listUsername {
+            @include Font(null, 0.95rem, $FontColorDark, null, 600);
+          }
+
+          .userLastMsg {
+            color: rgba($FontColorDark, 0.75);
+            max-width: 150px;
+            flex: 2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .inboxSortRight {
+          @extend %FlexCol-EndEnd;
+
+          .userLastMsgTime {
+            @include Font(null, 0.75rem, rgba($FontColorDark, 0.75), null, 400);
+          }
+
+          .userUnreadMsg {
+            margin-top: 3px;
+
+            > span {
+              display: inline-block;
+              padding: 2px 7px 1px 7px;
+              background: $BlackColor;
+              @include BorderRadius(20px);
+              @include Font(null, 0.7rem, $WhiteColor, null, 600);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.inboxList_blurred {
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.inboxConservation {
+  flex: 2;
+  @include Flexbox;
+  @include FlexDirection(column);
+
+  @include RespondTo(IpadDevices) {
+    @include Size(100%, 100%);
+  }
+
+  .inboxConservationTitle {
+    @include Size(100%, 60px);
+    @extend %FlexRow-CenterBetween;
+    border-bottom: 1px solid $BorderDark;
+    padding: 0px 10px;
+    flex-shrink: 0;
+    @include BoxShadow(1px 1px 1px rgba($BlackColor, 0.05));
+
+    @include RespondTo(IpadDevices) {
+      height: 50px;
+    }
+
+    .headerBackMobile {
+      display: none;
+      padding-right: 10px;
+
+      @include RespondTo(IpadDevices) {
+        display: block;
+      }
+
+      i {
+        @include Size(20px, 20px);
+
+        button,
+        svg {
+          @include Size(20px, 20px);
+        }
+      }
+    }
+
+    .conservationUserInfo {
+      flex: 2;
+      @include Flexbox;
+      @include FlexFlow(nowrap);
+
+      .userAvailability {
+        width: 7px;
+
+        .availabilityCircle {
+          @include Size(7px, 7px);
+          display: inline-block;
+          @include BorderRadius(50%);
+          background-color: $BorderDark;
+
+          &.isAvailable {
+            background: green;
+          }
+        }
+      }
+
+      .userInfo {
+        margin-left: 8px;
+
+        .conservationUsername {
+          @include Font(null, 1.2rem, $FontColorDark, null, 700);
+
+          @include RespondTo(IpadDevices) {
+            font-size: 1rem;
+          }
+        }
+
+        .userStatusAndTime {
+          @extend %FlexRow-CenterStart;
+          padding-top: 2px;
+
+          .availabilityStatus {
+            @include Font(null, 0.75rem, rgba($FontColorDark, 0.75), null, 400);
+
+            @include RespondTo(IpadDevices) {
+              font-size: 0.7rem;
+            }
+          }
+
+          .localTime {
+            border-left: 1px solid $BorderDark;
+            padding-left: 8px;
+            margin-left: 8px;
+            @include Font(null, 0.75rem, rgba($FontColorDark, 0.75), null, 400);
+
+            @include RespondTo(IpadDevices) {
+              font-size: 0.7rem;
+            }
+          }
+        }
+      }
+    }
+
+    .conservationTitleAction {
+      .button.default {
+        background: none;
+        border: 1px solid $BorderDark;
+        color: $FontColorDark;
+
+        @include RespondTo(MobileDevices) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        &:hover {
+          background-color: rgba($BorderDark, 0.7);
+        }
+      }
+    }
+
+    .iconsButton {
+      @extend %FlexCol-CenterCenter;
+    }
+
+    h2 {
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: 600;
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+
+  .inboxConservationContainer {
+    overflow-y: auto;
+    flex-grow: 1;
+    @include Flexbox;
+    @include FlexDirection(column);
+
+    .chatboxContainer {
+      overflow-y: auto;
+      flex-grow: 1;
+      padding: 10px;
+
+      @include RespondTo(IpadDevices) {
+        padding: 7px;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 20px 0 20px;
+
+        @include RespondTo(IpadDevices) {
+          padding: 0 15px 0 15px;
+        }
+      }
+
+      .border {
+        border-bottom: 1px solid $BorderDark;
+        width: 100%;
+      }
+
+      .content {
+        width: 400px;
+        text-align: center;
+
+        @include RespondTo(IpadDevices) {
+          width: 100%;
+        }
+      }
+    }
+
+    .chatboxFooter {
+      @include Size(100%, auto);
+      @extend %FlexCol-CenterBetween;
+      border-top: 1px solid $BorderDark;
+      padding: 10px 10px;
+      flex-shrink: 0;
+      background-color: rgba($BorderDark, 0.3);
+    }
+  }
+}
+
+.inbox__chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.chatMsg {
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+  padding: 7px;
+  width: 100%;
+  
+  .msgBox {
+    width: 400px;
+    display: flex;
+  }
+  
+  &.msgMine {
+    justify-content: flex-end;
+
+    .msgBox {
+      flex-direction: row-reverse;
+      gap: 10px;
+    }
+
+    .userMsg {
+      .nameAndTime {
+        justify-content: flex-end;
+
+        .msgSender {
+          border-left: 1px solid $BorderDark;
+          padding-left: 10px;
+          margin-left: 10px;
+        }
+
+        .msgTime {
+          border-left: none;
+          padding-left: 0;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  
+  &.msgOpposite {
+    justify-content: flex-start;
+  }
+
+  .userPic {
+    width: 42px;
+
+    @include RespondTo(IpadDevices) {
+      width: 36px;
+    }
+
+    > span {
+      display: inline-block;
+      @include Size(42px, 42px);
+      @include BorderRadius(50%);
+      background: rgba($BorderDark, 0.3);
+
+      @include RespondTo(IpadDevices) {
+        @include Size(36px, 36px);
+      }
+    }
+  }
+
+  .userMsg {
+    margin-left: 10px;
+
+    @include RespondTo(IpadDevices) {
+      margin-left: 7px;
+    }
+
+    .nameAndTime {
+      @extend %FlexRow-CenterStart;
+
+      .msgSender {
+        @include Font(null, 1rem, $FontColorDark, null, 600);
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.9rem;
+        }
+      }
+
+      .msgTime {
+        @include Font(null, 0.75rem, rgba($FontColorDark, 0.75), null, 400);
+        padding-left: 10px;
+        margin-left: 10px;
+        border-left: 1px solid $BorderDark;
+
+        @include RespondTo(IpadDevices) {
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    > p {
+      @include Font(null, 0.9rem, $FontColorDark, null, 400);
+
+      @include RespondTo(IpadDevices) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+.attachedFileContainer {
+  width: 100%;
+  padding: 0 0px 10px 33px;
+
+  .chatAttachedFile {
+    @include Size(150px, 100px);
+    @include BorderRadius(10px);
+    overflow: hidden;
+    position: relative;
+
+    .chatAttachedFile_removeIc {
+      @include Absolute($Right: 7px, $Top: 7px);
+      cursor: pointer;
+    }
+  }
+}
+
+.chatboxFooterForm {
+  width: 100%;
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+
+  .charboxAttachment {
+    @extend %FlexCol-CenterCenter;
+  }
+
+  .chatInputContainer {
+    flex: 2;
+    position: relative;
+    margin: 0 10px;
+
+    @include RespondTo(IpadDevices) {
+      margin: 0 5px;
+    }
+
+    .chatboxInput {
+      @include Size(100%, 45px);
+      padding: 7px 15px;
+      padding-right: 40px;
+      font-size: 0.8rem;
+      border: 1px solid $BorderDark;
+
+      @include RespondTo(IpadDevices) {
+        height: 36px;
+        font-size: 0.7rem;
+        padding: 5px 8px;
+        padding-right: 35px;
+      }
+    }
+
+    .chatInputSmiley {
+      @include Absolute($Right: 10px, $Top: 50%);
+      transform: translateY(-50%);
+      @extend %FlexCol-CenterCenter;
+
+      > button {
+        @extend %FlexCol-CenterCenter;
+      }
+
+      .smileyPickerMain {
+        @include Absolute($Bottom: 35px, $Right: -10px);
+      }
+    }
+  }
+
+  .chatButton {
+    width: 100px;
+
+    @include RespondTo(IpadDevices) {
+      width: auto;
+    }
+  }
+}
+
+.darkMode {
+  .inbox {
+    border-left-color: $BorderLight;
+    border-right-color: $BorderLight;
+  }
+
+  .inboxList {
+    border-right-color: $BorderLight;
+
+    .inboxHeader {
+      border-bottom-color: $BorderLight;
+      background-color: lighten($DarkBg, 5%);
+
+      .inboxHeaderSort {
+        color: $FontColorLight;
+      }
+
+      .inboxHeaderSearch {
+        svg {
+          path {
+            fill: $FontColorLight;
+          }
+        }
+      }
+    }
+
+    .inboxListContainer {
+      .inboxListItem {
+        border-bottom-color: $BorderLight;
+
+        .inboxUserThumb {
+          > span.profilePic {
+            background: rgba($BorderLight, 0.75);
+          }
+
+          .userAvailabilityIc {
+            background: rgba($WhiteColor, 0.3);
+
+            &.isAvailable {
+              background: green;
+            }
+          }
+        }
+
+        .inboxUserSort {
+          .inboxSortLeft {
+            .listUsername {
+              color: $FontColorLight;
+            }
+
+            .userLastMsg {
+              color: rgba($FontColorLight, 0.5);
+            }
+          }
+
+          .inboxSortRight {
+            .userLastMsgTime {
+              color: rgba($FontColorLight, 0.5);
+            }
+
+            .userUnreadMsg {
+              > span {
+                background: $LightBlueColor;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .inboxConservation {
+    .inboxConservationTitle {
+      border-bottom-color: $BorderLight;
+      background-color: lighten($DarkBg, 5%);
+
+      .headerBackMobile {
+        i {
+          svg {
+            path {
+              fill: $FontColorLight;
+            }
+          }
+        }
+      }
+
+      .conservationUserInfo {
+        .userAvailability {
+          .availabilityCircle {
+            background-color: $BorderLight;
+
+            &.isAvailable {
+              background: green;
+            }
+          }
+        }
+
+        .userInfo {
+          .conservationUsername {
+            color: $FontColorLight;
+          }
+
+          .userStatusAndTime {
+            .availabilityStatus {
+              color: rgba($FontColorLight, 0.75);
+            }
+
+            .localTime {
+              border-left-color: $BorderLight;
+              color: rgba($FontColorLight, 0.5);
+            }
+          }
+        }
+      }
+
+      .conservationTitleAction {
+        .button.default {
+          border-color: lighten($BorderLight, 7%);
+          color: $FontColorLight;
+
+          &:hover {
+            background-color: rgba($BorderLight, 0.7);
+          }
+        }
+      }
+    }
+
+    .inboxConservationContainer {
+      .chatboxContainer {
+        .border {
+          border-bottom-color: $BorderLight;
+        }
+      }
+
+      .chatboxFooter {
+        border-top-color: $BorderLight;
+        background-color: lighten($DarkBg, 5%);
+      }
+    }
+  }
+
+  .chatMsg {
+    .userPic {
+      > span {
+        background: rgba($BorderLight, 0.75);
+      }
+    }
+
+    .userMsg {
+      .nameAndTime {
+        .msgSender {
+          color: $FontColorLight;
+          border-left-color: $BorderLight;
+        }
+
+        .msgTime {
+          color: rgba($FontColorLight, 0.5);
+          border-left-color: $BorderLight;
+        }
+      }
+
+      > p {
+        color: $FontColorLight;
+      }
+    }
+  }
+
+  .chatboxFooterForm {
+    .charboxAttachment {
+      button {
+        svg {
+          path {
+            fill: $FontColorLight;
+          }
+        }
+      }
+    }
+
+    .chatInputContainer {
+      .chatboxInput {
+        border-color: lighten($BorderLight, 5%);
+        background: transparent;
+        color: $FontColorLight;
+      }
+
+      .chatInputSmiley {
+        button {
+          svg {
+            path {
+              fill: $FontColorLight;
+            }
+          }
+        }
+      }
+    }
+  }
+}

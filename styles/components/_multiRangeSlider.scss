@@ -1,0 +1,122 @@
+.multiRangeContainer {
+  position: relative;
+  margin-top: 15px;
+
+  /* Removing the default appearance */
+  .thumb {
+    @include Size(100%, 0px);
+    @include Absolute;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: none;
+    outline: none;
+
+    /* For Chrome browsers */
+    &::-webkit-slider-thumb {
+      @include Size(18px, 18px);
+      @include BorderRadius(50%);
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      background-color: $BlackColor;
+      border: 2px solid $WhiteColor;
+      cursor: pointer;
+      margin-top: 4px;
+      pointer-events: all;
+      position: relative;
+    }
+
+    /* For Firefox browsers */
+    &::-moz-range-thumb {
+      @include Size(18px, 18px);
+      @include BorderRadius(50%);
+      background-color: $BlackColor;
+      border: 2px solid $WhiteColor;
+      cursor: pointer;
+      margin-top: 4px;
+      pointer-events: all;
+      position: relative;
+    }
+
+    &.thumbLeft {
+      z-index: 3;
+    }
+
+    &.thumbRight {
+      z-index: 4;
+    }
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    padding-bottom: 50px;
+
+    .sliderTrack,
+    .sliderRange,
+    .sliderLeftValue,
+    .sliderRightValue {
+      position: absolute;
+    }
+
+    .sliderTrack,
+    .sliderRange {
+      border-radius: 3px;
+      height: 3px;
+    }
+
+    .sliderTrack {
+      background-color: $BorderDark;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .sliderRange {
+      background-color: darken($BorderDark, 25%);
+      z-index: 2;
+    }
+
+    .sliderLeftValue,
+    .sliderRightValue {
+      width: 70px;
+      color: $OrangeColor;
+      font-size: 12px;
+      margin-top: 18px;
+
+      input {
+        width: 100%;
+        padding: 5px 8px;
+        height: 33px;
+      }
+    }
+
+    .sliderLeftValue {
+      left: 0px;
+    }
+
+    .sliderRightValue {
+      right: 0px;
+    }
+  }
+}
+
+.darkMode {
+  .multiRangeContainer {
+    .thumb {
+      &::-webkit-slider-thumb {
+        border-color: $LightBlueColor;
+        background-color: $LightBlueColor;
+      }
+
+      &::-moz-range-thumb {
+        border-color: $LightBlueColor;
+        background-color: $LightBlueColor;
+      }
+    }
+
+    .slider {
+      .sliderTrack {
+        background-color: rgba($WhiteColor, 0.25);
+      }
+    }
+  }
+}

@@ -1,0 +1,319 @@
+.button {
+  display: inline-block;
+  height: 42px;
+  padding: 0.7rem 1.3rem;
+  @include BorderRadius(2px);
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  min-width: 90px;
+  @include Transition(0.2s);
+
+  @include RespondTo(MobileDevices) {
+    text-align: center;
+    height: 36px;
+    padding: 0.5rem 1.1rem;
+  }
+
+  &:hover {
+    @include Transition(0.2s);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &.small {
+    height: 34px;
+    padding: 0.5rem 0.9rem;
+  }
+
+  &.withIcon {
+    @extend %FlexRow-CenterStart;
+    display: inline-flex;
+    padding-left: 0.6rem;
+
+    @include RespondTo(MobileDevices) {
+      @include JustifyContent(center);
+      padding-right: 0.6rem;
+    }
+
+    i {
+      width: 24px;
+      @extend %FlexCol-CenterCenter;
+
+      svg {
+        @include Size(18px, 18px);
+      }
+
+      + span {
+        flex: 2;
+        margin-left: 7px;
+      }
+    }
+
+    span {
+      margin-left: 10px;
+      flex: 2;
+
+      + i {
+        margin-left: 7px;
+      }
+    }
+  }
+
+  &.rounded {
+    @include BorderRadius(70px);
+  }
+
+  &.primary {
+    background: $PrimaryColor;
+    border-color: $PrimaryColor;
+
+    &:hover {
+      background: darken($PrimaryColor, 7%);
+      border-color: darken($PrimaryColor, 7%);
+      @include BoxShadow(2px 2px 5px rgba($PrimaryColor, 0.4));
+    }
+  }
+
+  &.secondary {
+    background: $SecondaryColor;
+    border-color: $SecondaryColor;
+
+    &:hover {
+      background: darken($SecondaryColor, 7%);
+      border-color: darken($SecondaryColor, 7%);
+      @include BoxShadow(2px 2px 5px rgba($SecondaryColor, 0.4));
+    }
+  }
+
+  &.orange {
+    background: $OrangeColor;
+    border-color: $OrangeColor;
+
+    &:hover {
+      background: darken($OrangeColor, 7%);
+      border-color: darken($OrangeColor, 7%);
+      @include BoxShadow(2px 2px 5px rgba($OrangeColor, 0.4));
+    }
+  }
+
+  &.green {
+    background: $GreenColor;
+    border-color: $GreenColor;
+
+    &:hover {
+      background: darken($GreenColor, 7%);
+      border-color: darken($GreenColor, 7%);
+      @include BoxShadow(2px 2px 5px rgba($GreenColor, 0.4));
+    }
+  }
+
+  &.default {
+    background: $LightBg;
+    border-color: $LightBg;
+
+    &:hover {
+      background: darken($LightBg, 7%);
+      border-color: darken($LightBg, 7%);
+      @include BoxShadow(2px 2px 5px rgba($LightBg, 0.4));
+    }
+  }
+
+  &.light {
+    background: $LightBg;
+    border-color: $LightBg;
+
+    &:hover {
+      background: darken($LightBg, 7%);
+      border-color: darken($LightBg, 7%);
+      @include BoxShadow(2px 2px 5px rgba($LightBg, 0.4));
+    }
+  }
+
+  &.dark {
+    background: $DarkBg;
+    border-color: $DarkBg;
+    color: $WhiteColor;
+
+    &:hover {
+      background: darken($DarkBg, 7%);
+      border-color: darken($DarkBg, 7%);
+      @include BoxShadow(2px 2px 5px rgba($DarkBg, 0.4));
+    }
+  }
+
+  &.bordered {
+    &.primary {
+      background: none;
+      border-color: $PrimaryColor;
+      color: $PrimaryColor;
+
+      &:hover {
+        background: darken($PrimaryColor, 7%);
+        border-color: darken($PrimaryColor, 7%);
+        color: $WhiteColor;
+      }
+    }
+
+    &.secondary {
+      background: none;
+      border-color: $SecondaryColor;
+      color: $SecondaryColor;
+
+      &:hover {
+        background: darken($SecondaryColor, 7%);
+        border-color: darken($SecondaryColor, 7%);
+        color: $WhiteColor;
+      }
+    }
+
+    &.orange {
+      background: none;
+      border-color: $OrangeColor;
+      color: $OrangeColor;
+
+      &:hover {
+        background: darken($OrangeColor, 7%);
+        border-color: darken($OrangeColor, 7%);
+        color: $WhiteColor;
+      }
+    }
+
+    &.green {
+      background: none;
+      border-color: $GreenColor;
+      color: $GreenColor;
+
+      &:hover {
+        background: darken($GreenColor, 7%);
+        border-color: darken($GreenColor, 7%);
+        color: $WhiteColor;
+      }
+    }
+
+    &.default {
+      background: none;
+      border-color: $LightBg;
+      color: $LightBg;
+
+      &:hover {
+        background: darken($LightBg, 7%);
+        border-color: darken($LightBg, 7%);
+        color: $BlackColor;
+      }
+    }
+
+    &.light {
+      background: none;
+      border-color: $LightBg;
+      color: $LightBg;
+
+      &:hover {
+        background: darken($LightBg, 7%);
+        border-color: darken($LightBg, 7%);
+        color: $BlackColor;
+      }
+    }
+
+    &.dark {
+      background: none;
+      border-color: $DarkBg;
+      color: $DarkBg;
+
+      &:hover {
+        background: darken($DarkBg, 7%);
+        border-color: darken($DarkBg, 7%);
+        color: $WhiteColor;
+      }
+    }
+  }
+
+  &.transparent {
+    background: transparent;
+    border-color: transparent;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: $PrimaryColor;
+  font-weight: 600;
+}
+
+.darkMode {
+  .button {
+    &.primary {
+      background: $LightBlueColor;
+      border-color: $LightBlueColor;
+      color: $WhiteColor;
+
+      &:hover {
+        background: darken($LightBlueColor, 7%);
+        border-color: darken($LightBlueColor, 7%);
+        @include BoxShadow(2px 2px 5px rgba($BlackColor, 0.2));
+      }
+    }
+
+    &.default {
+      background: darken($DarkBg, 5%);
+      border-color: darken($DarkBg, 5%);
+      color: $FontColorLight;
+
+      &:hover {
+        background: darken($DarkBg, 10%);
+        border-color: darken($DarkBg, 10%);
+        @include BoxShadow(2px 2px 5px rgba($DarkBg, 0.5));
+      }
+    }
+
+    &.withIcon {
+      @extend %FlexRow-CenterStart;
+      display: inline-flex;
+      padding-left: 0.6rem;
+
+      @include RespondTo(MobileDevices) {
+        @include JustifyContent(center);
+        padding-right: 0.6rem;
+      }
+
+      i {
+        width: 24px;
+        @extend %FlexCol-CenterCenter;
+
+        svg {
+          @include Size(18px, 18px);
+
+          path {
+            fill: $WhiteColor;
+          }
+        }
+
+        + span {
+          flex: 2;
+          margin-left: 7px;
+        }
+      }
+    }
+
+    &.dark {
+      background: $DarkBlueBg;
+      border-color: $DarkBlueBg;
+  
+      &:hover {
+        background: lighten($DarkBlueBg, 7%);
+        border-color: lighten($DarkBlueBg, 7%);
+        @include BoxShadow(2px 2px 5px rgba($DarkBlueBg, 0.4));
+      }
+    }
+  }
+}

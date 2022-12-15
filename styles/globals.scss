@@ -1,0 +1,52 @@
+/*-----------------------------------------------------------------
+[Legal Notice]
+
+Copyright (c) Jobzura
+Website Template by Vijay Bhatiya
+http://www.jobzura.com
+-------------------------------------------------------------------*/
+
+/* Helpers */
+@import "helpers/_mixins";
+@import "helpers/_variables";
+@import "helpers/_flex";
+
+/* Bases */
+@import "base/reset";
+@import "base/spacing";
+@import "base/common";
+@import "base/fonts";
+@import "base/base";
+@import "base/svg-background";
+
+/* Componets */
+@import "components/accountModel";
+@import "components/buttons";
+@import "components/cardUi";
+@import "components/customDropdownControl";
+@import "components/dropDown";
+@import "components/formControls";
+@import "components/modalUi";
+@import "components/multiRangeSlider";
+@import "components/multiTabs";
+@import "components/reactDropdownSelect";
+@import "components/radioGroup";
+@import "components/swiperSlider";
+@import "components/tableUi";
+@import "components/typography";
+@import "components/networkSwitchButton";
+@import "components/antFileUpload";
+
+/* Layout */
+@import "layout/header";
+
+/* Pages */
+@import "pages/FindTalent";
+@import "pages/UserProfile";
+@import "pages/Messages";
+@import "pages/JobDetails";
+@import "pages/Jobs";
+@import "pages/Orders";
+@import "pages/SubmitReview";
+@import "pages/CreateJob";
+@import "pages/StartDispute";

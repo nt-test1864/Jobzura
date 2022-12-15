@@ -1,0 +1,84 @@
+.aboutContainer {
+  width: 700px;
+  border: 1px solid $BorderDark;
+
+  .aboutSeller {
+    padding: 1.5em;
+
+    .aboutSeller__header {
+      display: flex;
+      justify-content: space-between;
+
+      &--left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+        .aboutSeller__header__image {
+          width: 50px;
+          height: 50px;
+          object-fit: cover;
+        }
+      }
+
+      &--right {
+        button {
+          padding: 0.5em 1em;
+          border: 1px solid $BorderDark;
+          background-color: $WhiteColor;
+          color: $BlackColor;
+          font-weight: 700;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .aboutSeller__description {
+      margin-top: 1em;
+      font-weight: 700;
+    }
+
+    .aboutSeller__skills {
+      display: flex; 
+      margin-top: 1em;
+      gap: 1em;
+
+      span {
+        padding: 0.5em 1em;
+        border-radius: 9999px;
+        font-weight: 700;
+        background: #EEF1F9;
+      }
+    }
+
+    .aboutSeller_stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1em 2em 0 0;
+      font-weight: 700;
+
+      .aboutSeller__reviews {
+        display: flex;
+        align-items: center;
+        
+        .ratingCounts {
+          margin: 0 .3em .15em .3em;
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1248px) {
+    max-width: 700px;
+    width: 100%;
+  }
+}
+
+.darkMode {
+  .aboutContainer {
+    border: 1px solid $BorderLight;
+    
+  }
+}

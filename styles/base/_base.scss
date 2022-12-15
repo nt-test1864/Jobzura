@@ -1,0 +1,47 @@
+body {
+  background: $BaseBg;
+}
+
+::-moz-selection {
+  background: $PrimaryColor;
+  color: $WhiteColor;
+}
+::selection {
+  background: $PrimaryColor;
+  color: $WhiteColor;
+}
+
+*,
+*:focus,
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.layoutMain {
+  @include Size(100%, 100vh);
+  overflow: hidden;
+  @include Flexbox;
+  @include FlexDirection(column);
+
+  &.darkMode {
+    background: $DarkBg;
+  }
+}
+
+#__next {
+  @include Size(100%, 100%);
+}
+
+main.containerMain {
+  flex: 2;
+  overflow-y: scroll;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

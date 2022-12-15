@@ -1,0 +1,498 @@
+.hasSidebar {
+  @include Flexbox;
+  @include FlexFlow(nowrap);
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @include RespondTo(IpadDevices) {
+    @include FlexFlow(wrap);
+  }
+}
+
+.mobileFilterTrigger {
+  display: none;
+
+  @include RespondTo(IpadDevices) {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+.sidebarFilters {
+  width: 250px;
+
+  @include RespondTo(IpadDevices) {
+    display: none;
+  }
+
+  &.show {
+    @include RespondTo(IpadDevices) {
+      display: block;
+      @include Size(100%, calc(100% - 86px));
+      @include Fixed($Left: 0px, $Top: 86px);
+      z-index: 9;
+      background: $WhiteColor;
+      padding: 20px;
+      overflow: auto;
+    }
+
+    .filtersClose {
+      @include RespondTo(IpadDevices) {
+        display: block;
+        @include Size(32px, 32px);
+        @include Absolute($Right: 10px, $Top: 10px);
+      }
+
+      i,
+      .linkButton {
+        @include Size(32px, 32px);
+        @extend %FlexCol-CenterCenter;
+
+        svg {
+          @include Size(22px, 22px);
+        }
+      }
+    }
+  }
+
+  .filtersClose {
+    display: none;
+  }
+
+  .sidebarHeader {
+    @include Font(null, 1.17rem, $FontColorDark, null, 700);
+    margin-bottom: 10px;
+  }
+
+  .filterBlock {
+    margin-bottom: 20px;
+
+    .filterBlockTitle {
+      h3 {
+        @include Font(null, 1rem, $FontColorDark, null, 700);
+        margin-bottom: 10px;
+      }
+    }
+
+    .filterBlockBody {
+      .categories {
+        h4 {
+          @include Font(null, 1rem, $FontColorDark, null, 700);
+          margin: 6px 0;
+        }
+
+        ul {
+          li {
+            @include Flexbox;
+            gap: 10px;
+          }
+        }
+      }
+
+      ul {
+        li {
+          list-style: none;
+          margin: 0.2em 0;
+
+          .button {
+            min-width: 1px;
+            padding: 0;
+            height: auto;
+          }
+
+          &.active {
+            .button {
+              font-weight: 700;
+              color: $BlackColor;
+            }
+          }
+
+          .fontBigger {
+            font-weight: 400;
+            font-size: 18px;
+          }
+
+          .capitalize {
+            text-transform: capitalize;
+          }
+
+          .skillSet {
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 0;
+
+            &.active {
+              font-weight: 700;
+              color: $BlackColor;
+            }
+          }
+        }
+      }
+
+      .radioGroupMain .radioItem {
+        background-color: $BorderDark;
+
+        .radioInput + .radioLabel {
+          padding-top: 8px;
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+
+.jobsSection {
+  flex: 2;
+  margin-left: 20px;
+
+  @include RespondTo(MobileDevices) {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .jobsHeader {
+    @extend %FlexRow-CenterBetween;
+
+    @include RespondTo(MobileDevices) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .jobsHeaderRight {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+
+      @include RespondTo(MobileDevices) {
+        margin-top: 10px;
+      }
+
+      .sortDropdown {
+        @extend %FlexRow-CenterBetween;
+
+        .customDropdownControl {
+          width: 150px;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .jobs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8em;
+    margin: 1em 0;
+
+    .noSkills {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gigBlock {
+      width: calc(33% - 13px);
+
+      @include RespondTo(SmallDesktop) {
+        width: calc(50% - 13px);
+      }
+
+      @include RespondTo(MobileDevices) {
+        width: 100%;
+        gap: 0;
+      }
+
+      .blockInner {
+        cursor: pointer;
+        width: 100%;
+
+        .blockThumb {
+          @include Size(100%, 220px);
+          background: rgba($BorderDark, 0.5);
+
+          @include RespondTo(SmallDesktop) {
+            height: 200px;
+          }
+
+          > span {
+            height: 220px !important;
+
+            @include RespondTo(SmallDesktop) {
+              height: 200px !important;
+            }
+
+            img {
+              height: 220px !important;
+              object-fit: cover;
+
+              @include RespondTo(SmallDesktop) {
+                height: 200px !important;
+              }
+            }
+          }
+
+          .placeholderImage {
+            @extend %placeholderImage;
+            @include Size(100%, 100%);
+            background-repeat: no-repeat;
+            background-size: 25%;
+            background-position: center;
+            opacity: 0.2;
+          }
+
+          .imageGaller {
+            @include Size(100%, 100%);
+
+            .swiper {
+              @include Size(100%, 100%);
+
+              .swiper-slide {
+                width: 100% !important;
+
+                > span,
+                img {
+                  width: 100% !important;
+                  height: 100% !important;
+                }
+              }
+            }
+          }
+        }
+
+        .blockContent {
+          border: 1px solid rgba($BorderDark, 0.5);
+
+          .blockDetails {
+            padding: 10px 15px;
+
+            .blockSeller {
+              display: flex;
+              align-items: center;
+              gap: 1em;
+              margin-bottom: 1em;
+
+              .sellerImage {
+                @include Size(30px, 30px);
+                border-radius: 50%;
+                background: rgba($BorderDark, 0.5);
+              }
+
+              .sellerName {
+                font-weight: 700;
+              }
+            }
+
+            .blockTitle {
+              @include Font(null, 1rem, $FontColorDark, null, 700);
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              margin-bottom: 5px;
+            }
+
+            .blockDescription {
+              @include Font(null, 0.9rem, $FontColorDark, 1.2rem, 400);
+              min-height: 60px;
+              overflow: hidden;
+            }
+          }
+
+          .blockFooter {
+            border-top: 1px solid rgba($BorderDark, 0.5);
+            padding: 10px;
+            @extend %FlexRow-CenterBetween;
+
+            .gigRateReview {
+              @extend %FlexRow-CenterCenter;
+
+              .gigStars {
+                @extend %FlexRow-CenterCenter;
+
+                .startRattings {
+                  @extend %FlexRow-CenterCenter;
+
+                  i {
+                    @include Size(14px, 14px);
+                    @extend %FlexCol-CenterCenter;
+
+                    &.fill {
+                      svg {
+                        path {
+                          fill: $FontColorDark;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .rattingCounts {
+                  @include Font(null, 0.8rem, $FontColorDark, null, 700);
+                  padding-left: 5px;
+                }
+              }
+
+              .gigTotalReviews {
+                @include Font(
+                  null,
+                  0.8rem,
+                  rgba($FontColorDark, 0.7),
+                  null,
+                  400
+                );
+                white-space: nowrap;
+                padding-left: 5px;
+              }
+            }
+
+            .gigPrice {
+              @include Font(null, 0.8rem, $FontColorDark, null, 700);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .sidebarFilters {
+    &.show {
+      @include RespondTo(IpadDevices) {
+        background: $DarkBg;
+      }
+
+      .filtersClose {
+        @include RespondTo(IpadDevices) {
+          display: block;
+          @include Size(32px, 32px);
+          @include Absolute($Right: 10px, $Top: 10px);
+        }
+
+        i,
+        .linkButton {
+          @include Size(32px, 32px);
+          @extend %FlexCol-CenterCenter;
+
+          svg {
+            @include Size(22px, 22px);
+
+            path {
+              fill: $WhiteColor;
+            }
+          }
+        }
+      }
+    }
+
+    .sidebarHeader {
+      color: $FontColorLight;
+    }
+
+    .filterBlockTitle {
+      h3 {
+        color: $FontColorLight;
+      }
+    }
+
+    .filterBlockBody {
+      .categories {
+        h4 {
+          color: $WhiteColor;
+        }
+      }
+
+      ul {
+        li {
+          .button {
+            color: $FontColorLight;
+          }
+
+          &.active {
+            .button {
+              color: $LightBlueColor;
+            }
+
+            .active {
+              color: $WhiteColor;
+            }
+          }
+        }
+      }
+
+      .radioGroupMain .radioItem {
+        background-color: $BorderLight;
+      }
+    }
+  }
+
+  .jobsSection {
+    .jobs {
+      .gigBlock {
+        .blockInner {
+          .blockThumb {
+            background: rgba($BorderLight, 0.5);
+          }
+
+          .blockContent {
+            border-color: $BorderLight;
+
+            .blockDetails {
+              .blockSeller {
+                .sellerImage {
+                  background: rgba($BorderLight, 0.5);
+                }
+              }
+
+              .blockTitle {
+                color: $FontColorLight;
+              }
+
+              .blockDescription {
+                color: $FontColorLight;
+              }
+            }
+
+            .blockFooter {
+              border-top-color: $BorderLight;
+
+              .gigRateReview {
+                .gigStars {
+                  .startRattings {
+                    i {
+                      &.fill {
+                        svg {
+                          path {
+                            fill: $FontColorLight;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .rattingCounts {
+                    color: $FontColorLight;
+                  }
+                }
+
+                .gigTotalReviews {
+                  color: rgba($FontColorLight, 0.7);
+                }
+              }
+
+              .gigPrice {
+                color: $FontColorLight;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

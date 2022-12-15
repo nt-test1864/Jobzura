@@ -1,0 +1,111 @@
+.card {
+  @include Size(100%, auto);
+  background: $WhiteColor;
+  border: 1px solid $WhiteColor;
+  @include BorderRadius($CardRounded);
+  @include BoxShadow(0px 0px $CardRounded rgba($PrimaryColor, 0.15));
+
+  @include RespondTo(MobileDevices) {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .cardHeader {
+    padding-bottom: 18px;
+    @extend %FlexRow-CenterBetween;
+    padding: 17px 24px;
+    border-bottom: 1px solid $BorderDark;
+
+    @include RespondTo(MobileDevices) {
+      padding-bottom: 18px;
+      @include FlexDirection(column);
+    }
+
+    .cardTitle {
+      flex: 2;
+      @include Font(null, 1.1rem, $FontColorDark, null, 600);
+
+      h2 {
+        margin: 0;
+      }
+
+      p {
+        margin: 7px 0;
+      }
+    }
+
+    .cardAction {
+      @include RespondTo(MobileDevices) {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .button {
+        @include RespondTo(MobileDevices) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .cardBody {
+    width: 100%;
+    padding: 24px;
+  }
+
+  &.cardInnerSplit {
+    padding: 0;
+    @include Flexbox;
+    @include FlexFlow(nowrap);
+    border-color: $LightBg;
+
+    @include RespondTo(IpadDevices) {
+      @include FlexFlow(wrap);
+    }
+
+    .cardSidebar {
+      width: 300px;
+      background-color: $LightBg;
+      @include BorderRadius($CardRounded 0 0 $CardRounded);
+
+      @include RespondTo(IpadDevices) {
+        width: 100%;
+        border-radius: 14px 14px 0 0;
+      }
+    }
+
+    .cardBody {
+      flex: 2;
+      padding: 24px;
+
+      @include RespondTo(MobileDevices) {
+        flex: unset;
+        padding: 18px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.darkMode {
+  .card {
+    background: none;
+    border-color: $BorderLight;
+    box-shadow: none;
+
+    .cardHeader {
+      border-bottom-color: $BorderLight;
+
+      .cardTitle {
+        flex: 2;
+        color: $WhiteColor;
+      }
+    }
+
+    &.cardInnerSplit {
+      .cardSidebar {
+        background-color: $BorderLight;
+      }
+    }
+  }
+}

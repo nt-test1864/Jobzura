@@ -1,0 +1,376 @@
+.topHeader {
+  border-bottom: 1px solid $BorderDark;
+
+  .backButton {
+    cursor: pointer;
+    @include Font(null, 1rem, rgba($FontColorDark, 50%), null, 600);
+    display: flex;
+    align-items: center;
+    gap: .6em;
+    max-width: 1230px;
+    margin: 1em auto;
+    padding: 0 15px;
+  }
+} 
+
+.container {
+  width: 100%;
+  height: calc(100% - 55px);
+  margin: 0 auto;
+  display: flex;
+  max-width: 1230px;
+  border-bottom: 1px solid $BorderDark;
+  border-left: 1px solid $BorderDark;
+  border-right: 1px solid $BorderDark;
+  
+  @include RespondTo(IpadDevices) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 450px;
+    border-right: 1px solid $BorderDark;
+
+    @include RespondTo(IpadDevices) {
+      border-left: 1px solid $BorderDark;
+    }
+
+    .sidebarContainer {
+      display: flex;
+      flex-direction: column;
+
+      .sidebarHeader {
+        border-bottom: 1px solid $BorderDark;
+        padding: 2em;
+
+        .sidebarDetails {
+          @extend %FlexRow-CenterBetween;
+          margin-top: 1.5em;
+        
+          .sidebarThumb {
+            @include Size(75px, 50px);
+            background-color: rgba($BorderDark, 0.5);
+            
+            @include RespondTo(MobileDevices) {
+              @include Size(50px, 36px);
+            }
+          }
+            
+          h3 {
+            width: 300px;
+            font-size: 1.2rem;
+            
+            @include RespondTo(MobileDevices) {
+              font-size: 0.95rem;
+              line-height: 0.95rem;
+            }
+          }
+        }
+      }
+
+      .sidebarInfos {
+        @include Font(null, .8rem, rgba($FontColorDark, 50%), null, 600);
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 2em;
+        border-bottom: 1px solid $BorderDark;
+
+        .row {
+          display: flex;
+          justify-content: space-between;
+
+          .left {
+            display: flex;
+            gap: .5em;
+
+            label {
+              margin-top: 1px;
+            }
+          }
+
+          .right {
+            font-weight: 700;
+            color: $FontColorDark;
+          }
+        }
+
+        h3 {
+          @include Font(null, 1rem, rgba($FontColorDark, 50%), null, 700);
+          color: $FontColorDark;
+        } 
+
+        p {
+          @include Font(null, .8rem, rgba($FontColorDark, 50%), null, 600);
+          color: $FontColorDark;
+        }
+      }
+
+      .sidebarInfos:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .disputeBox {
+    width: 100%;
+
+    @include RespondTo(IpadDevices) {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .disputeBoxHeader {
+      @include Font(null, .9rem, rgba($FontColorDark, 100%), null, 600);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em;
+      border-bottom: 1px solid $BorderDark;
+
+      @include RespondTo(IpadDevices) {
+        border: 1px solid $BorderDark;
+      }
+
+      .disputeBoxHeaderRight {
+        display: flex;
+        gap: 1em;
+
+        > button {
+          @include Font(null, .9rem, rgba($FontColorDark, 100%), null, 700);
+          @include Size(140px, 35px);
+          border: 1px solid $BorderDark;
+          background: transparent;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .disputeBoxBody {
+      height: calc(100% - 120px);
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      border-bottom: 1px solid $BorderDark;
+
+      .disputeBoxChat {
+        background-color: #F9F9F9;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        width: 95%;
+        padding: 1em;
+        margin: 1em auto;
+        height: 40%;
+
+        .disputeBoxChatHeader {
+          display: flex;
+          align-items: center;
+          gap: .7em;
+
+          > span {
+            @include Font(null, .8rem, rgba($FontColorDark, 60%), null, 500);
+          }
+
+          .profileThumb {
+            @include Size(40px, 40px);
+            background-color: #D9D9D9;
+            border-radius: 50%;
+          }
+
+          .profileName {
+            @include Font(null, .8rem, rgba($FontColorDark, 100%), null, 700);
+            color: $FontColorDark;
+            display: flex;
+            gap: .5em;
+
+            > span {
+              @include Font(null, .8rem, rgba($FontColorDark, 60%), null, 700);
+            }
+          }
+        }
+
+        .disputeBoxChatBody {
+          margin-top: 1em;
+          display: flex;
+          flex-direction: column;
+          gap: .3em;
+          
+          .disputeBoxChatBodyHeader {
+            border-left: 2px solid #B3B3B3;
+            display: flex;
+            padding-left: .5em;
+            flex-direction: column;
+
+            > span {
+              @include Font(null, .8rem, rgba($FontColorDark, 60%), null, 600);
+              color: $FontColorDark;
+            }
+          }
+
+
+          .disputeBoxChatBodyImages {
+            display: flex;
+            gap: .5em;
+            margin-top: .5em;
+
+            .disputeBoxChatBodyImage {
+              @include Size(33%, 155px);
+              background-color: #A5A5A5;
+            }
+          }
+        }
+      }
+    }
+
+    .chatboxContainer {
+      width: 95%;
+      padding: 1em;
+      margin: 1em auto;
+    }
+
+    .attachedFileContainer {
+      width: 100%;
+      padding: 0 0px 10px 33px;
+      display: flex;
+      justify-content: flex-end;
+    
+      .chatAttachedFile {
+        @include Size(200px, 200px);
+        @include BorderRadius(10px);
+        overflow: hidden;
+        position: relative;
+    
+        .chatAttachedFile_removeIc {
+          @include Absolute($Right: 7px, $Top: 7px);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .topHeader {
+    border-bottom: 1px solid $BorderLight;
+
+    .backButton {
+      @include Font(null, 1rem, rgba($FontColorLight, 50%), null, 600);
+    }
+  } 
+
+  .container {
+    border-bottom: 1px solid $BorderLight;
+    border-left: 1px solid $BorderLight;
+    border-right: 1px solid $BorderLight;
+
+    .sidebar {
+      border-right: 1px solid $BorderLight;
+
+      @include RespondTo(IpadDevices) {
+        border-left: 1px solid $BorderLight;
+      }
+
+      .sidebarContainer {
+        .sidebarHeader {
+          border-bottom: 1px solid $BorderLight;
+          .sidebarDetails {
+            margin-top: 1.5em;
+          
+            .sidebarThumb {
+              background-color: rgba($BorderLight, 0.5);
+            }
+          }
+        }
+
+        .sidebarInfos {
+          @include Font(null, .8rem, rgba($FontColorLight, 50%), null, 600);
+          border-bottom: 1px solid $BorderLight;
+
+          h3 {
+            @include Font(null, 1rem, rgba($FontColorLight, 50%), null, 700);
+          }
+
+          p {
+            @include Font(null, .8rem, rgba($FontColorLight, 50%), null, 600);
+          }
+
+          .row {
+            .left {
+              .profileName {
+                @include Font(null, .8rem, rgba($FontColorLight, 100%), null, 700);
+                color: $FontColorLight;
+
+                > span {
+                  @include Font(null, .8rem, rgba($FontColorLight, 60%), null, 700);
+                }
+              }
+            }
+
+            .right {
+              color: $FontColorLight;
+            }
+          }
+        }
+      }
+    }
+
+    .disputeBox {
+      .disputeBoxHeader {
+        @include Font(null, .9rem, rgba($FontColorLight, 100%), null, 600);
+        border-bottom: 1px solid $BorderLight;
+
+        @include RespondTo(IpadDevices) {
+          border: 1px solid $BorderLight;
+        }
+
+        .disputeBoxHeaderRight {
+          > button {
+            @include Font(null, .9rem, rgba($FontColorLight, 100%), null, 700);
+            border: 1px solid $BorderLight;
+          }
+        }
+      }
+
+      .disputeBoxBody {
+        border-bottom: 1px solid $BorderLight;
+
+        .disputeBoxChat {
+          background-color: #1f2536;
+          border-bottom: 1px solid $BorderLight;
+
+          .disputeBoxChatHeader {
+            > span {
+              @include Font(null, .8rem, rgba($FontColorLight, 60%), null, 500);
+            }
+
+            .profileName {
+              @include Font(null, .8rem, rgba($FontColorLight, 100%), null, 700);
+              color: $FontColorLight;
+
+              > span {
+                @include Font(null, .8rem, rgba($FontColorLight, 60%), null, 700);
+              }
+            }
+          }
+
+          .disputeBoxChatBody {
+            .disputeBoxChatBodyHeader {
+              border-left: 2px solid #B3B3B3;
+              > span {
+                @include Font(null, .8rem, rgba($FontColorLight, 60%), null, 600);
+                color: $FontColorLight;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

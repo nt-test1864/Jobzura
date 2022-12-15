@@ -1,0 +1,233 @@
+.modalMain {
+  @include Size(100%, 100vh);
+  @include Fixed($Left: 0, $Top: 0);
+  background: rgba($BlackColor, 0.3);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 99;
+
+  .modalContainer {
+    width: auto;
+    @include Relative;
+    @include Flexbox;
+    @include AlignItems(center);
+    max-width: 500px;
+    margin: 1.75rem auto;
+    transform: translate(0, 0);
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    min-height: calc(100% - (1.75rem * 2));
+
+    @include RespondTo(MobileDevices) {
+      max-width: 95%;
+    }
+
+    .modalBox {
+      @include Relative;
+      @include Flexbox;
+      @include FlexDirection(column);
+      width: 100%;
+      pointer-events: auto;
+      background-color: $WhiteColor;
+      background-clip: padding-box;
+      border: 1px solid rgba($BlackColor, 0.05);
+      @include BorderRadius($CardRounded);
+      outline: 0;
+
+      .modalHeader {
+        @include Flexbox;
+        @include AlignItems(flex-start);
+        @include JustifyContent(space-between);
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        border-top-left-radius: $CardRounded;
+        border-top-right-radius: $CardRounded;
+
+        h5 {
+          @include Font(null, 1.1rem, $FontColorDark, null, 400);
+        }
+
+        .linkButton {
+          @include Font(null, 1.2rem, rgba($FontColorDark, 0.7), null, 500);
+
+          &:hover {
+            color: $BlackColor;
+          }
+        }
+      }
+
+      .modalBody {
+        @include Relative;
+        flex: 1 1 auto;
+        padding: 1rem;
+
+        @include RespondTo(MobileDevices) {
+          padding: 0.7rem;
+        }
+      }
+
+      .modalFooter {
+        @include Flexbox;
+        @include AlignItems(center);
+        @include JustifyContent(flex-end);
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+      }
+
+      .alertBody {
+        padding: 1.5rem 1rem;
+        text-align: center;
+
+        .alertIcon {
+          svg {
+            @include Size(72px, 72px);
+          }
+        }
+
+        .alertMessage {
+          padding-top: 12px;
+          font-size: 1.2rem;
+        }
+
+        .alertAction {
+          padding-top: 15px;
+
+          .button {
+            + .button {
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .transactionHash {
+          color: $FontColorDark;
+          padding: 1.5rem 0;
+
+          > span {
+            display: block;
+            word-break: break-all;
+          }
+        }
+
+        &.ErrorMsg {
+          .alertIcon {
+            svg {
+              path {
+                fill: lighten($ErrorColor, 10%);
+              }
+            }
+          }
+          .alertMessage {
+            color: lighten($ErrorColor, 10%);
+          }
+        }
+
+        &.PendingMsg {
+          .alertIcon {
+            svg {
+              path {
+                fill: $OrangeColor;
+              }
+            }
+          }
+          .alertMessage {
+            color: $OrangeColor;
+          }
+        }
+
+        &.SuccessMsg {
+          .alertIcon {
+            svg {
+              path,
+              polygon {
+                fill: $GreenColor;
+              }
+            }
+          }
+          .alertMessage {
+            color: darken($GreenColor, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .modalMain {
+    .modalContainer {
+      .modalBox {
+        background-color: $DarkBlueBg;
+        border-color: lighten($DarkBlueBg, 10%);
+
+        .modalHeader {
+          border-bottom-color: lighten($BorderLight, 5%);
+
+          h5 {
+            color: $FontColorLight;
+          }
+
+          .linkButton {
+            color: rgba($FontColorLight, 0.7);
+
+            &:hover {
+              color: $WhiteColor;
+            }
+          }
+        }
+
+        .modalBody {
+          .button.dark {
+            background: darken($DarkBlueBg, 8%);
+            border-color: darken($DarkBlueBg, 8%);
+
+            &:hover {
+              background: lighten($DarkBlueBg, 7%);
+              border-color: lighten($DarkBlueBg, 7%);
+              @include BoxShadow(2px 2px 5px rgba($DarkBlueBg, 0.4));
+            }
+          }
+        }
+
+        .modalFooter {
+          border-top-color: lighten($BorderLight, 5%);
+        }
+
+        .alertBody {
+          .transactionHash {
+            color: $FontColorLight;
+          }
+        }
+
+        .customDropdownControl {
+          .customDropdownControl__control {
+            background: none;
+            border-color: lighten($BorderLight, 8%);
+            color: $FontColorLight;
+
+            .customDropdownControl__value-container {
+              .customDropdownControl__single-value {
+                color: $WhiteColor;
+              }
+
+              .customDropdownControl__input-container {
+              }
+            }
+
+            .customDropdownControl__indicators {
+              .customDropdownControl__indicator-separator {
+                background-color: $BorderLight;
+              }
+
+              .customDropdownControl__indicator {
+              }
+            }
+          }
+
+          .customDropdownControl__menu {
+            background: darken($DarkBg, 3%);
+          }
+        }
+      }
+    }
+  }
+}

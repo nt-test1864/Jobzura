@@ -1,0 +1,200 @@
+/*
+@extend %FlexRow-StartStart - is creating a problem in @include RespondTo(xyz)
+*/
+
+/* Font Properties */
+@mixin Font($FontFamily: $PrimaryFont, $FontSize: null, $Color: null, $LineHeight: null, $FontWeight: null) {
+    font-family: $FontFamily;
+    font-size: $FontSize;
+    color: $Color;
+    line-height: $LineHeight;
+    font-weight: $FontWeight;
+}
+/* End - Font Properties */
+
+/* Font Face*/
+@mixin FontFace($Family, $Src, $Style: normal, $Weight: normal) {
+    @font-face {
+        font-family: $Family;
+        src: url("#{$FontPath}/#{$Src}.eot");
+        src: url("#{$FontPath}/#{$Src}.eot?#iefix") format("embedded-opentype"),
+             url("#{$FontPath}/#{$Src}.woff") format("woff"),
+             url("#{$FontPath}/#{$Src}.ttf") format("truetype"),
+             url("#{$FontPath}/#{$Src}.svg##{$Family}") format("svg");
+        font-style: $Style;
+        font-weight: $Weight;
+    }
+}
+/* End - Font Face*/
+
+/* Element Width/Height */
+@mixin Size($Width, $Height) {
+    width: $Width;
+    height: $Height;
+}
+/* End - Element Width/Height */
+
+/* Gradient */
+@mixin gradient($direction, $list) {
+    @include Prefix(background, linear-gradient($direction, $list), $Vendors: webkit moz ms o);
+}
+/* End - Gradient */
+
+/* Backgorund Images */
+@mixin BackgroundImage($Img, $BackgorundRepeat: null, $BackgroundPosition: null, $BackgroundColor: transparent) {
+    background-image: url("#{$ImgPath}/#{$Img}");
+    background-repeat: $BackgorundRepeat;
+    background-position: $BackgroundPosition;
+    background-color: $BackgroundColor;
+}
+/* Backgorund Images */
+
+/* Prefix mixins */
+@mixin Prefix($Property, $Value, $Vendors: webkit moz ms o) {
+    @if $Vendors {
+        @each $Vendors in $Vendors {
+            #{"-" + $Vendors + "-" + $Property}: #{$Value};
+        }
+    }
+    #{$Property}: #{$Value};
+}
+/* End - Prefix mixins */
+
+/* Border Radius */
+@mixin BorderRadius($Radius) {
+    @include Prefix(border-radius, $Radius, $Vendors: webkit moz ms o);
+}
+/* End - Border Radius */
+
+/* Box Shadow */
+@mixin BoxShadow($Params) {
+    @include Prefix(box-shadow, $Params, $Vendors: webkit moz ms o);
+}
+/* End - Box Shadow */
+
+/* Transitions */
+@mixin Transition($TransitionTime) {
+    @include Prefix(transition, all ease-out $TransitionTime, $Vendors: webkit moz ms o);
+}
+/* End - Transitions */
+
+/* Truncate */
+@mixin Truncate($TruncationBoundary) {
+    max-width: $TruncationBoundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* End - Truncate */
+
+/* Margin/Padding */
+@mixin MarginAll($Top, $Right, $Bottom, $Left) {
+    margin-top: $Top;
+    margin-right: $Right;
+    margin-bottom: $Bottom;
+    margin-left: $Left;
+}
+@mixin PaddingAll($Top, $Right, $Bottom, $Left) {
+    padding-top: $Top;
+    padding-right: $Right;
+    padding-bottom: $Bottom;
+    padding-left: $Left;
+}
+@mixin ResetMarginPadding {
+    margin: 0px;
+    padding: 0px;
+}
+/* End - Margin/Padding */
+
+/* Triangle Mixins */
+@mixin Triangle($Direction, $Width, $Height, $Color) {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+
+    @if $Direction == Top {
+        border-width: 0 $Height $Width $Height;
+        border-color: transparent transparent $Color transparent;
+    }
+    @if $Direction == Bottom {
+        border-width: $Height $Width 0 $Height;
+        border-color: $Color transparent transparent transparent;
+    }
+    @if $Direction == Left {
+        border-width: $Height $Width $Height 0;
+        border-color: transparent $Color transparent transparent;
+    }
+    @if $Direction == Right {
+        border-width: $Height 0 $Height $Width;
+        border-color: transparent transparent transparent $Color;
+    }
+    @if $Direction == TopRight {
+        border-width: 0 $Width $Height 0;
+        border-color: transparent $Color transparent transparent;
+    }
+    @if $Direction == BottomRight {
+        border-width: 0 0 $Width $Height;
+        border-color: transparent transparent $Color transparent;
+    }
+    @if $Direction == BottomLeft {
+        border-width: $Width 0 0 $Height;
+        border-color: transparent transparent transparent $Color;
+    }
+    @if $Direction == TopLeft {
+        border-width: $Width $Height 0 0;
+        border-color: $Color transparent transparent transparent;
+    }
+}
+/* End - Triangle Mixins */
+
+/* Positions mixins */
+@mixin Position($Position, $Top: null, $Right: null, $Bottom: null, $Left: null) {
+    position: $Position;
+    top: $Top;
+    right: $Right;
+    bottom: $Bottom;
+    left: $Left;
+}
+@mixin Absolute($Args...) {
+    @include Position(absolute, $Args...);
+}
+@mixin Relative($Args...) {
+    @include Position(relative, $Args...);
+}
+@mixin Fixed($Args...) {
+    @include Position(fixed, $Args...);
+}
+/* End - Positions mixins */
+
+/* Media mixins */
+@mixin RespondTo($Media) {
+    @if $Media==LargeDesktop {
+        @media only screen and (max-width: $LargeDesktop) {
+            @content;
+            /* 1800px */
+        }
+    } @else if $Media==MediumDesktop {
+        @media only screen and (max-width: $MediumDesktop) {
+            @content;
+            /* 1400px */
+        }
+    } @else if $Media==SmallDesktop {
+        @media only screen and (max-width: $SmallDesktop) {
+            @content;
+            /* 1024px */
+        }
+    } @else if $Media==IpadDevices {
+        @media only screen and (max-width: $IpadDevices) {
+            @content;
+            /* 768px */
+        }
+    } @else if $Media==MobileDevices {
+        @media only screen and (max-width: $MobileDevices) {
+            @content;
+            /* 600px */
+        }
+    }
+}
+/* End - Media mixins */

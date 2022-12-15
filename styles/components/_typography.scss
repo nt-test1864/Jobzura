@@ -1,0 +1,336 @@
+// Base
+.layoutMain {
+  color: $FontColorDark;
+
+  &.darkMode {
+    color: $FontColorLight;
+  }
+}
+
+// Reset
+html,
+body {
+  font-family: $PrimaryFont;
+}
+
+body {
+  @include Font(null, $FontMedium, $FontColorDark, normal, 400);
+  letter-spacing: 0.2px;
+
+  @include RespondTo(MobileDevices) {
+    letter-spacing: 0;
+    font-size: 12px;
+  }
+}
+
+a {
+  color: $PrimaryColor;
+
+  &:hover {
+    color: $PrimaryColor;
+  }
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: $PrimaryFont;
+}
+
+// Common
+.pageHeader {
+  h1 {
+    @include Font(null, 1.7rem, $BlackColor, 44px, 600);
+
+    @include RespondTo(MobileDevices) {
+      font-size: 1.4rem;
+      line-height: normal;
+    }
+  }
+}
+
+.error {
+  color: $ErrorColor;
+  font-size: 10px;
+  font-style: italic;
+}
+
+.noData {
+  h2 {
+    @include Font(null, 1rem, $FontColorDark, null, 600);
+
+    @include RespondTo(MobileDevices) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+// Buttons
+.button {
+  @include Font(null, 0.8rem, null, null, 600);
+  letter-spacing: 0.5px;
+
+  @include RespondTo(MobileDevices) {
+    font-size: 0.7rem;
+  }
+
+  &.small {
+    font-size: 0.7rem;
+  }
+
+  &.primary {
+    color: $WhiteColor;
+  }
+
+  &.secondary {
+    color: $BlackColor;
+  }
+
+  &.orange {
+    color: $WhiteColor;
+  }
+
+  &.green {
+    color: $BlackColor;
+  }
+
+  &.transparent {
+    color: $FontColorDark;
+
+    &:hover {
+      color: $PrimaryColor;
+    }
+  }
+}
+
+// Card Ui
+.card {
+  .cardHeader {
+    .cardTitle {
+      h2 {
+        @include Font(null, 1.4rem, $BlackColor, null, 600);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 1rem;
+        }
+      }
+
+      p {
+        @include Font(null, 1rem, $FontColorDark, null, 400);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// Drop-down
+.dropdownMenu {
+  ul {
+    li {
+      a {
+        &:hover {
+          color: $BlackColor;
+        }
+      }
+    }
+  }
+}
+
+// Form
+.formMain {
+  .formRow {
+    .fieldError {
+      font-size: 0.8rem;
+      color: $ErrorColor;
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+.MuiAutocomplete-root {
+  .MuiFilledInput-root {
+    &.MuiFilledInput-underline {
+      .MuiInputBase-input {
+        @include Font($PrimaryFont, 0.85rem, $FontColorDark, null, null);
+      }
+    }
+  }
+}
+
+// Data-table Grid
+.MuiPaper-root.MuiTableContainer-root {
+  .MuiTableCell-root.MuiTableCell-head {
+    color: rgba($FontColorDark, 0.75) !important;
+    font-family: $PrimaryFont !important;
+    font-weight: 600;
+
+    @include RespondTo(MobileDevices) {
+      font-size: 0.7rem;
+    }
+  }
+
+  .MuiTableCell-root.MuiTableCell-body {
+    color: $FontColorDark !important;
+
+    @include RespondTo(MobileDevices) {
+      font-size: 0.9rem;
+      white-space: normal;
+    }
+
+    .mobileLabel {
+      @include RespondTo(MobileDevices) {
+        font-size: 0.7rem;
+        color: $PrimaryColor;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Tooltip
+.MuiTooltip-tooltip {
+  font-size: 0.8rem !important;
+
+  @include RespondTo(MobileDevices) {
+    font-size: 0.7rem;
+  }
+}
+
+.MuiTooltip-arrow {
+  color: $PrimaryColor !important;
+}
+
+// Header
+header {
+  nav.navbarMain {
+    ul {
+      li {
+        a {
+          font-size: 0.8rem;
+          color: $FontColorDark;
+
+          @include RespondTo(IpadDevices) {
+            font-size: 1.2rem;
+            color: $FontColorLight;
+          }
+
+          @include RespondTo(SmallDesktop) {
+            font-size: 0.7rem;
+          }
+        }
+
+        &.active {
+          a {
+            color: $PrimaryColor;
+
+            @include RespondTo(IpadDevices) {
+              color: $LightBlueColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// =========== Dark mode =========== //
+.darkMode {
+  .pageHeader {
+    h1 {
+      color: $WhiteColor;
+    }
+  }
+
+  .noData {
+    h2 {
+      color: $FontColorLight;
+    }
+  }
+
+  .error {
+    color: lighten($ErrorColor, 10%);
+  }
+
+  .card {
+    .cardHeader {
+      .cardTitle {
+        h2 {
+          color: $WhiteColor;
+        }
+
+        p {
+          color: $FontColorLight;
+        }
+      }
+    }
+  }
+
+  .dropdownMenu {
+    &.withIc {
+      li {
+        a {
+          color: $FontColorLight;
+        }
+      }
+    }
+
+    ul {
+      li {
+        a {
+          &:hover {
+            color: $LightBlueColor;
+          }
+        }
+      }
+    }
+  }
+
+  .formInput {
+    color: $FontColorLight;
+  }
+
+  .formTextarea {
+    color: $FontColorLight;
+  }
+
+  .MuiPaper-root.MuiTableContainer-root {
+    .MuiTableCell-root.MuiTableCell-head {
+      color: rgba($FontColorLight, 0.75) !important;
+    }
+
+    .MuiTableCell-root.MuiTableCell-body {
+      color: $FontColorLight !important;
+
+      .mobileLabel {
+        @include RespondTo(MobileDevices) {
+          color: $LightBlueColor;
+        }
+      }
+    }
+  }
+
+  header {
+    nav.navbarMain {
+      ul {
+        li {
+          a {
+            color: $FontColorLight;
+          }
+
+          &.active {
+            a {
+              color: $SecondaryColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}

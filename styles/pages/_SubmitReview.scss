@@ -1,0 +1,358 @@
+.top-nav {
+  width: 100%;
+  border-bottom: 1px solid $BorderDark;
+
+  .wrapper {
+    max-width: 660px;
+    @extend %FlexRow-CenterStart;
+    padding: 12px 0;
+
+    .headerCount {
+      @include Size(28px, 28px);
+      background: $BorderDark;
+      @include BorderRadius(50%);
+      @extend %FlexCol-CenterCenter;
+      margin-right: 10px;
+
+      @include RespondTo(MobileDevices) {
+        @include Size(24px, 24px);
+      }
+    }
+
+    > h3 {
+      @include Font(null, 1rem, $FontColorDark, null, 700);
+
+      @include RespondTo(MobileDevices) {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.reviewContainer {
+  width: 96%;
+  max-width: 660px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+
+  .formBox {
+    width: 100%;
+    border: 1px solid $BorderDark;
+    border-top: none;
+    padding: 25px;
+    @extend %FlexCol-StartStart;
+
+    @include RespondTo(MobileDevices) {
+      padding: 15px;
+    }
+
+    > * {
+      width: 100%;
+    }
+
+    .submitReviewTitle {
+      h1 {
+        @include Font(null, 1.5rem, $FontColorDark, null, 700);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 1.17rem;
+        }
+      }
+
+      .reviewNote {
+        margin-top: 0.7em;
+        @include Font(null, 0.9rem, $FontColorDark, null, 400);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.8rem;
+        }
+
+        .reviewJobModel {
+          font-weight: bold;
+          color: $LightBlueColor;
+          cursor: pointer;
+          position: relative;
+        }
+      }
+    }
+
+    .modal {
+      @include Absolute($Top: 50%, $Left: calc(100% + 12px));
+      transform: translateY(-50%);
+
+      @include RespondTo(IpadDevices) {
+        top: calc(100% + 12px);
+        left: 50%;
+        transform: none;
+        transform: translateX(-50%);
+      }
+
+      .polygon {
+        @include Absolute($Top: 50%, $Left: -8px);
+        transform: translateY(-50%);
+        @include Triangle(Left, 8px, 8px, $FontColorDark);
+
+        @include RespondTo(IpadDevices) {
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          @include Triangle(Top, 8px, 8px, $FontColorDark);
+        }
+      }
+
+      .modalContent {
+        color: $LightBlueBg;
+        border-radius: 8px;
+        background-color: $FontColorDark;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        @include RespondTo(MobileDevices) {
+          padding: 12px;
+          border-radius: 5px;
+        }
+
+        .placeholderImage {
+          @extend %placeholderImage;
+          @include Size(100%, 100%);
+          background-repeat: no-repeat;
+          background-size: 25%;
+          background-position: center;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    .starRatting {
+      margin-top: 2rem;
+
+      @include RespondTo(MobileDevices) {
+        margin-top: 1.5rem;
+      }
+
+      h2 {
+        margin-bottom: 4px;
+        @include Font(null, 1rem, $FontColorDark, null, 700);
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.8rem;
+        }
+      }
+
+      .rating {
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: flex-end;
+
+        @include RespondTo(MobileDevices) {
+          margin-top: 0.35rem;
+        }
+      }
+
+      span {
+        margin-left: 0.5rem;
+        font-weight: 700;
+        font-size: 0.8rem;
+
+        @include RespondTo(MobileDevices) {
+          margin-left: 0.35rem;
+          font-size: 0.7rem;
+        }
+      }
+    }
+
+    .reviewComment {
+      margin-top: 2rem;
+
+      @include RespondTo(MobileDevices) {
+        margin-top: 1.5rem;
+      }
+
+      h2 {
+        @include Font(null, 1rem, $FontColorDark, null, 700);
+        margin: 0;
+
+        @include RespondTo(MobileDevices) {
+          font-size: 0.9rem;
+        }
+      }
+
+      .commentArea {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 8px;
+
+        @include RespondTo(MobileDevices) {
+          padding-top: 5px;
+        }
+
+        .textareaNote {
+          font-size: 0.9em;
+          align-self: flex-end;
+          padding-top: 3px;
+
+          @include RespondTo(MobileDevices) {
+            font-size: 0.8rem;
+          }
+        }
+
+        .privateCheckbox {
+          display: flex;
+          width: fit-content;
+          gap: 1em;
+          margin-top: 1.5em;
+          font-size: 0.9em;
+
+          @include RespondTo(MobileDevices) {
+            gap: 0.7rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+          }
+
+          input[type="checkbox"] {
+            cursor: pointer;
+          }
+
+          .checkboxLabel {
+            display: flex;
+            position: relative;
+            align-items: center;
+            gap: 1em;
+
+            @include RespondTo(MobileDevices) {
+              gap: 0.7rem;
+            }
+
+            span {
+              font-weight: 600;
+            }
+
+            .infoTooltip {
+              @include Absolute($Left: calc(100% + 14px), $Top: 50%);
+              transform: translateY(-50%);
+              @include BorderRadius(6px);
+              background: $DarkBg;
+              padding: 0.7em 1em;
+              color: $WhiteColor;
+
+              @include RespondTo(MobileDevices) {
+                left: 70%;
+                top: auto;
+                bottom: calc(100% + 14px);
+                transform: translateX(-50%);
+                padding: 0.5rem 0.8rem;
+              }
+
+              p {
+                position: relative;
+                white-space: nowrap;
+              }
+
+              .polygon {
+                @include Absolute($Left: -8px, $Top: 50%);
+                transform: translateY(-50%);
+                @include Triangle(Left, 8px, 8px, $DarkBg);
+
+                @include RespondTo(MobileDevices) {
+                  left: 50%;
+                  transform: translateX(-50%);
+                  top: auto;
+                  bottom: -8px;
+                  @include Triangle(Bottom, 8px, 8px, $DarkBg);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.submitButton {
+  display: flex;
+  justify-content: flex-end;
+
+  span {
+    font-size: 0.8rem;
+    margin-right: 1rem;
+    margin-top: 1.8rem;
+    color: rgb(49, 107, 49);
+  }
+
+  button {
+    width: 175px;
+  }
+}
+
+.darkMode {
+  .top-nav {
+    border-bottom-color: $BorderLight;
+
+    .wrapper {
+      .headerCount {
+        background: $BorderLight;
+      }
+
+      > h3 {
+        color: $WhiteColor;
+      }
+    }
+  }
+
+  .reviewContainer {
+    .formBox {
+      border-color: $BorderLight;
+
+      .submitReviewTitle {
+        h1 {
+          color: $FontColorLight;
+        }
+
+        .reviewNote {
+          color: $FontColorLight;
+        }
+      }
+
+      .modal {
+        .modalContent {
+          color: $FontColorLight;
+          background-color: $DarkBlueBg;
+        }
+      }
+
+      .starRatting {
+        h2 {
+          color: $FontColorLight;
+        }
+      }
+
+      .reviewComment {
+        h2 {
+          color: $FontColorLight;
+        }
+
+        .commentArea {
+          .privateCheckbox {
+            .checkboxLabel {
+              .infoTooltip {
+                background: $BorderLight;
+                color: $WhiteColor;
+
+                .polygon {
+                  border-color: transparent $BorderLight transparent transparent;
+
+                  @include RespondTo(MobileDevices) {
+                    border-color: $BorderLight transparent transparent transparent;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

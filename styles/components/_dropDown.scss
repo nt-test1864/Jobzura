@@ -1,0 +1,191 @@
+.dropdownMenu {
+  @include Absolute($Top: 100%, $Left: 0px);
+  min-width: 230px;
+  background-color: $WhiteColor;
+  @include BorderRadius(0px 0px $CardRounded $CardRounded);
+  @include BoxShadow(1px 1px 10px rgba($PrimaryColor, 0.1));
+  border: 1px solid $LightBg;
+  z-index: 10;
+
+  @include RespondTo(MobileDevices) {
+    min-width: 200px;
+  }
+
+  &::before {
+    @include Absolute($Top: -10px, $Left: 15px);
+    @include Triangle(Top, 10px, 7px, $PrimaryColor);
+  }
+
+  &::after {
+    @include Absolute($Top: -10px, $Left: 15px);
+    @include Triangle(Top, 10px, 7px, $WhiteColor);
+  }
+
+  &.right {
+    left: auto;
+    right: 0px;
+
+    &::before {
+      left: auto;
+      right: 15px;
+    }
+
+    &::after {
+      left: auto;
+      right: 15px;
+    }
+  }
+
+  &.withIc {
+    li {
+      a {
+        @extend %FlexRow-CenterBetween;
+
+        i {
+          @include Size(18px, 18px);
+          @extend %FlexCol-CenterCenter;
+
+          @include RespondTo(MobileDevices) {
+            @include Size(16px, 16px);
+          }
+
+          svg {
+            @include Size(16px, 16px);
+
+            @include RespondTo(MobileDevices) {
+              @include Size(14px, 14px);
+            }
+
+            path,
+            rect,
+            circle,
+            polygon {
+              fill: $BlackColor;
+            }
+          }
+
+          + span {
+            flex: 2;
+            padding-left: 15px;
+
+            @include RespondTo(MobileDevices) {
+              padding-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    padding-bottom: 3px;
+
+    li {
+      padding: 0;
+
+      + li {
+        border-top: 1px solid rgba($BorderDark, 0.5);
+      }
+
+      &:last-child {
+        a {
+          border-bottom: none;
+        }
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        padding: 15px;
+        @include Transition(0.2s);
+        font-weight: 600;
+
+        @include RespondTo(MobileDevices) {
+          padding: 12px;
+        }
+
+        &:hover {
+          background-color: lighten($BorderDark, 10%);
+          @include Transition(0.2s);
+        }
+      }
+    }
+  }
+}
+
+.darkMode {
+  .dropdownMenu {
+    background-color: $DarkBg;
+    @include BoxShadow(1px 1px 15px rgba($BlackColor, 0.3));
+    border: 1px solid $BorderLight;
+
+    &::before {
+      top: -12px;
+      left: 16px;
+      border-color: transparent transparent $BorderLight transparent;
+    }
+
+    &::after {
+      left: 16px;
+      border-color: transparent transparent $DarkBg transparent;
+    }
+
+    &.right {
+      &::before {
+        left: auto;
+        right: 16px;
+        top: -10px;
+      }
+      &::after {
+        top: -8px;
+        left: auto;
+        right: 16px;
+      }
+    }
+
+    &.withIc {
+      li {
+        a {
+          display: flex;
+
+          i {
+            svg {
+              path,
+              rect,
+              circle,
+              polygon {
+                fill: $FontColorLight;
+              }
+            }
+          }
+
+          &:hover {
+            i {
+              svg {
+                path {
+                  fill: $LightBlueColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    ul {
+      li {
+        + li {
+          border-top-color: $BorderLight;
+        }
+
+        a {
+          border-bottom-color: $BorderLight;
+
+          &:hover {
+            background-color: darken($DarkBg, 2%);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+
+/*============= Theme Config ==============*/
+$CardRounded                    : 3px;
+$FormControlRadius              : 3px;
+
+
+/*============= Color Variable =============*/
+$PrimaryColor                   : #2F499D;
+$SecondaryColor                 : #FDD061;
+
+$BaseBg                         : #FFFFFF;
+
+$DarkBg                         : #131722;
+$LightBg                        : #E6E9F2;
+
+$LightBlueBg                    : #EEF1F9;
+$DarkBlueBg                     : #272D3E;
+
+$FontColorDark                  : #2A3044;
+$FontColorLight                 : #b0b4c1;
+
+$LightBlueColor                 : #0083F7;
+
+$WhiteColor                     : #FFFFFF;
+$BlackColor                     : #000000;
+
+$BorderDark                     : #EAEAEA;
+$BorderLight                    : #272D3E;
+
+$ErrorColor                     : #FF0000;
+$OrangeColor                    : #FF6633;
+$GreenColor                     : #99CC33;
+
+
+/*============= Gradient Colors =============*/
+$BGGrad                         : #b2e621, #00b9fa;
+
+
+/*============= FontSize Variable =============*/
+$PrimaryFont                    : 'Nunito Sans', sans-serif; //'Montserrat', sans-serif;
+
+
+/*============= FontSize Variable =============*/
+$FontBase                       : 16px;
+$FontSmall                      : ceil(($FontBase * 0.75)); // ~12px
+$FontMedium                     : ceil(($FontBase * 0.81)); // ~13px
+$FontLarge                      : ceil(($FontBase * 1.50)); // ~24px
+$FontXLarge                     : ceil(($FontBase * 1.87)); // ~30px
+$FontXXLarge                    : ceil(($FontBase * 2.50)); // ~40px
+
+$ImgPath                        : "../../img";
+$FontPath                       : "../../fonts";
+
+
+/*============= FontSize Variable =============*/
+$LargeDesktop                   : 1800px;
+$MediumDesktop                  : 1400px;
+$SmallDesktop                   : 1070px;
+$IpadDevices                    : 768px;
+$MobileDevices                  : 600px;

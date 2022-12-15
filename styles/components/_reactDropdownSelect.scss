@@ -1,0 +1,83 @@
+.react-dropdown-select {
+  border-color: $BorderDark !important;
+
+  .react-dropdown-select-content {
+    .react-dropdown-select-input {
+      color: $FontColorDark;
+    }
+
+    .react-dropdown-select-option {
+      background: $LightBg;
+      @extend %FlexRow-CenterBetween;
+      border-radius: 50px !important;
+      padding: 4px 12px !important;
+
+      .react-dropdown-select-option-label {
+        @include Font(null, 0.8rem, $FontColorDark, null, 600);
+        @extend %FlexRow-CenterCenter;
+      }
+
+      .react-dropdown-select-option-remove {
+        @extend %FlexRow-CenterCenter;
+        color: $BlackColor;
+        font-size: 1.2rem !important;
+      }
+    }
+  }
+
+  .react-dropdown-select-dropdown {
+    &.react-dropdown-select-dropdown-position-bottom {
+      top: 100%;
+    }
+  }
+}
+
+.css-nfp1ut:hover,
+.css-nfp1ut:focus {
+  background: rgba($BlackColor, 0.1) !important;
+}
+
+.css-nfp1ut.react-dropdown-select-item-selected {
+  background: $BlackColor !important;
+}
+
+.css-1n7v3ny-option {
+  background-color: rgba($BlackColor, 0.1) !important;
+}
+
+.css-9gakcf-option {
+  background-color: $BlackColor !important;
+}
+
+.darkMode {
+  .react-dropdown-select {
+    border-color: lighten($BorderLight, 10%) !important;
+
+    .react-dropdown-select-content {
+      .react-dropdown-select-input {
+        color: $FontColorLight;
+      }
+
+      .react-dropdown-select-option {
+        background: $DarkBg;
+
+        .react-dropdown-select-option-label {
+          color: $FontColorLight;
+        }
+
+        .react-dropdown-select-option-remove {
+          color: $WhiteColor;
+        }
+      }
+    }
+
+    .react-dropdown-select-dropdown {
+      background-color: lighten($BorderLight, 10%) !important;
+      border-color: lighten($BorderLight, 15%) !important;
+
+      .react-dropdown-select-item {
+        border-bottom-color: lighten($BorderLight, 15%) !important;
+      }
+    }
+  }
+}
